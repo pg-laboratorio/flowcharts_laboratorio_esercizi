@@ -3,7 +3,7 @@
 
 ---
 
-## Sezione 1: Algoritmi Sequenziali e Condizionali Semplici
+## SEZIONE 1: Algoritmi Sequenziali e Condizionali Semplici
 
 ### Esercizio 1: Calcolo dell'Area di un Rettangolo
 Algoritmo che, dati i due lati di un rettangolo, calcola e fornisce in output l'area.
@@ -76,9 +76,7 @@ graph TD
 
 ---
 
-## Sezione 2: Esercitazione del 27 Ottobre
-
-### Esercizio 1: Differenza o Somma con Convalida dell'Input
+### Esercizio 5: Differenza o Somma con Convalida dell'Input
 
 Dati in ingresso due valori diversi, l'algoritmo calcola e fornisce in output la loro differenza se il primo è maggiore del secondo, altrimenti la loro somma. Include una deviazione di controllo per verificare che i valori inseriti non siano uguali.
 
@@ -101,7 +99,7 @@ graph TD
 
 ```
 
-### Esercizio 2: Moltiplicazione o Selezione Valore in Base al Segno
+### Esercizio 6: Moltiplicazione o Selezione Valore in Base al Segno
 
 Dati in ingresso due valori, se il primo valore è positivo l'algoritmo fornisce in output la loro moltiplicazione, altrimenti se il primo valore è negativo manda in output direttamente il secondo valore.
 
@@ -120,7 +118,7 @@ graph TD
 
 ```
 
-### Esercizio 3: Controllo Pari o Dispari
+### Esercizio 7: Controllo Pari o Dispari
 
 Dato in ingresso un valore che deve essere diverso da 0, l'algoritmo restituisce se tale numero è pari o dispari.
 
@@ -143,9 +141,7 @@ graph TD
 
 ---
 
-## Sezione 3: Esercitazione del 29 Ottobre
-
-### Esercizio 1: Somma Valori Esclusivamente Positivi
+### Esercizio 8: Somma Valori Esclusivamente Positivi
 
 Dati in ingresso due valori qualsiasi, l'algoritmo fornisce in output i valori sommati solo se entrambi sono maggiori di 0, altrimenti segnala errore.
 
@@ -164,7 +160,7 @@ graph TD
 
 ```
 
-### Esercizio 2: Somma Selettiva dei Valori Pari
+### Esercizio 9: Somma Selettiva dei Valori Pari
 
 Dati in ingresso due valori, l'algoritmo analizza i singoli elementi inseriti e ne accumula il valore solo se si tratta di numeri pari.
 
@@ -188,9 +184,7 @@ graph TD
 
 ---
 
-## Sezione 4: Esercitazione del 30 Ottobre
-
-### Esercizio 1: Output Esclusivo di Valori Dispari
+### Esercizio 10: Output Esclusivo di Valori Dispari
 
 Dati in ingresso due valori, l'algoritmo esegue un controllo di disparità e fornisce in output solo i valori che risultano dispari.
 
@@ -210,7 +204,7 @@ graph TD
 
 ```
 
-### Esercizio 2: Calcolo Somma dei Valori Dispari
+### Esercizio 11: Calcolo Somma dei Valori Dispari
 
 Dati in ingresso due valori, l'algoritmo effettua una verifica e restituisce la somma cumulativa dei soli valori inseriti che risultano dispari.
 
@@ -234,9 +228,7 @@ graph TD
 
 ---
 
-## Sezione 5: Compito del 4 Novembre
-
-### Esercizio 1: Il Maggiore tra Tre Numeri
+### Esercizio 12: Il Maggiore tra Tre Numeri
 
 Dati tre numeri in ingresso, l'algoritmo analizza le relazioni d'ordine tramite condizioni logiche e fornisce in output il valore massimo.
 
@@ -259,7 +251,7 @@ graph TD
 
 ```
 
-### Esercizio 2: Somma dei Numeri Pari Maggiori di Zero
+### Esercizio 13: Somma dei Numeri Pari Maggiori di Zero
 
 Dati tre numeri, l'algoritmo verifica per ciascuno se rispetta contemporaneamente la condizione di essere maggiore di zero e un numero pari, calcolandone e restituendone la somma cumulativa.
 
@@ -286,7 +278,7 @@ graph TD
 
 ---
 
-## Sezione 6: Esercitazione del 7 Novembre (Strutture Iterative)
+## SEZIONE 2 - Strutture Iterattive
 
 ### Esercizio 1: Iterazione Numeri da 0 a 3
 
@@ -328,9 +320,7 @@ graph TD
 
 ---
 
-## Sezione 7: Compito dell'11 Novembre
-
-### Esercizio 1: Somma Progressiva dei Numeri da 0 a 10
+### Esercizio 3: Somma Progressiva dei Numeri da 0 a 10
 
 L'algoritmo esegue un ciclo iterativo per calcolare e restituire la somma cumulativa di tutti i numeri interi compresi nell'intervallo tra 0 e 10.
 
@@ -349,7 +339,7 @@ graph TD
 
 ```
 
-### Esercizio 2: Somma dei Numeri Dispari da 5 a 15
+### Esercizio 4: Somma dei Numeri Dispari da 5 a 15
 
 L'algoritmo esegue un conteggio ciclico a partire dal valore iniziale 5 fino al limite 15, verificando la disparità di ogni elemento e accumulandone il valore della somma.
 
@@ -372,9 +362,7 @@ graph TD
 
 ---
 
-## Sezione 8: Esercitazione del 13 Novembre
-
-### Esercizio 1: Somma Iterativa Fino a un Limite x Definito dall'Utente
+### Esercizio 5: Somma Iterativa Fino a un Limite x Definito dall'Utente
 
 Dato un numero positivo in ingresso, l'algoritmo esegue un ciclo per calcolare e stampare in output la somma di tutti i valori compresi tra 0 e quel numero. Include un ciclo di validazione iniziale (ciclo while) per garantire la positività dell'input.
 
@@ -399,7 +387,7 @@ graph TD
 
 ---
 
-## Sezione 9: Esercitazione del 14 Novembre (Ripasso Generale)
+## SEZIONE 3 - Ripasso Generale
 
 ### Esercizio 1: Algoritmo Sequenziale Puro
 
