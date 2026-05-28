@@ -49,7 +49,7 @@ Dati tre numeri, l'algoritmo verifica per ciascuno se rispetta contemporaneament
 
 ---
 
-## SEZIONE 2 - Strutture Iterattive
+## SEZIONE 2 - Strutture Iterative
 
 ### Esercizio 1: Iterazione Numeri da 0 a 3
 Esempio base di applicazione di un ciclo definito tramite una variabile contatore per inviare in output i numeri in sequenza da 0 a 3 compreso.
