@@ -83,3 +83,12 @@ Dato un numero x inserito in input, l'algoritmo calcola e restituisce in sequenz
 
 ### Esercizio 4: Algoritmo di Ciclo Indefinito (Somma ad Oltranza)
 L'algoritmo riceve e somma numeri inseriti dall'utente in modo indefinita fino a quando la somma progressiva calcolata supera il valore limite di 100, mostrando poi il risultato finale della somma.
+
+---
+
+# Licenza
+
+Questo progetto e i materiali al suo interno sono distribuiti con licenza **[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)** (Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale).
+
+[![CC BY-NC-SA 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
