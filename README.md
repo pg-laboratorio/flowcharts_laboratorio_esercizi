@@ -1,6 +1,6 @@
 # Raccolta Esercizi di Algoritmi e Flowchart
 
-Introduzione alla programmazione: dai diagrammi di flusso a Python.
+Introduzione alla programmazione con i diagrammi di flusso.
 
 ---
 
@@ -11,15 +11,13 @@ Introduzione alla programmazione: dai diagrammi di flusso a Python.
 3. Disegna il flowchart.
 4. Solo a questo punto apri la sezione **Caso prova** sotto l'esercizio e verifica la soluzione: il tuo flowchart deve produrre esattamente quei risultati.
 
-Alcuni esercizi hanno anche un **Suggerimento** (leggilo solo se sei bloccato) e una nota **Verso Python**, che indica il costrutto Python corrispondente a ciò che stai disegnando.
+Alcuni esercizi hanno anche un **Suggerimento**: leggilo solo se sei bloccato.
 
 Gli esercizi sono indicati con un codice univoco: **S1-E7** significa *Sezione 1, Esercizio 7*.
 
 ### Convenzione sugli intervalli
 
 In tutta la raccolta, "da *a* a *b*" significa **estremi inclusi**. Esempio: "da 0 a 3" → 0, 1, 2, 3.
-
-> ⚠️ In Python `range(0, 3)` produce 0, 1, 2: il secondo estremo è **escluso**. Per arrivare a 3 serve `range(0, 4)`.
 
 ### Simboli dei flowchart
 
@@ -31,7 +29,7 @@ In tutta la raccolta, "da *a* a *b*" significa **estremi inclusi**. Esempio: "da
 | Decisione | Rombo | Condizione con due uscite: Vero / Falso |
 | Flusso | Freccia | Ordine di esecuzione |
 
-Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser)
+Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser) oppure [Flowgorithm](http://www.flowgorithm.org) (permette anche di eseguire il flowchart passo per passo).
 
 ### Tre parole da conoscere
 
@@ -59,8 +57,6 @@ Algoritmo che, dati la base e l'altezza di un rettangolo, calcola e fornisce in 
 
 </details>
 
-**Verso Python:** `input()`, `float()`, operatore `*`, `print()`.
-
 ---
 
 ### S1-E2: Area e Lunghezza della Circonferenza
@@ -79,8 +75,6 @@ Algoritmo che riceve in ingresso il raggio di un cerchio e calcola sia l'area de
 
 **Suggerimento:** area = π · r², circonferenza = 2 · π · r.
 
-**Verso Python:** `import math`, `math.pi`, `round(valore, 2)`.
-
 ---
 
 ### S1-E3: Il Maggiore tra Due Numeri
@@ -97,8 +91,6 @@ Algoritmo che, dati due numeri, restituisce il valore maggiore. Se i due numeri 
 | 4, 4 | I numeri sono uguali |
 
 </details>
-
-**Verso Python:** `if` / `elif` / `else`.
 
 ---
 
@@ -119,8 +111,6 @@ Una classe organizza una visita al museo. Conoscendo il numero di studenti e il 
 
 **Suggerimento:** salva il budget in una variabile (`BUDGET ← 100`) invece di scrivere 100 direttamente nella condizione. "Supera" significa `>`, non `>=`.
 
-**Verso Python:** costanti in maiuscolo (`BUDGET = 100`), `if` senza `else`.
-
 ---
 
 ### S1-E5: Differenza o Somma con Convalida dell'Input
@@ -137,8 +127,6 @@ Dati in ingresso due valori, l'algoritmo calcola e fornisce in output la loro di
 | 5, 5 | Errore: i valori devono essere diversi |
 
 </details>
-
-**Verso Python:** `if` / `elif` / `else`, operatore `==`.
 
 ---
 
@@ -159,8 +147,6 @@ Dati in ingresso due valori, se il primo è positivo l'algoritmo fornisce in out
 
 **Per riflettere:** lo zero non è né positivo né negativo. Cosa farebbe il tuo algoritmo se ti fossi dimenticato di questo caso?
 
-**Verso Python:** `if` / `elif` / `else` con tre rami.
-
 ---
 
 ### S1-E7: Pari o Dispari
@@ -180,8 +166,6 @@ Dato in ingresso un numero intero positivo, l'algoritmo stabilisce se è pari o 
 
 **Suggerimento:** un numero è pari se il **resto** della divisione per 2 è 0. Nota: anche 0 è pari; qui il vincolo "positivo" serve solo per esercitare il controllo dell'input.
 
-**Verso Python:** operatore resto `%`, `int()`.
-
 ---
 
 ### S1-E8: Somma di Valori Esclusivamente Positivi
@@ -198,8 +182,6 @@ Dati in ingresso due valori qualsiasi, l'algoritmo fornisce in output la loro so
 | 0, 5 | Errore *(0 non è maggiore di 0)* |
 
 </details>
-
-**Verso Python:** operatore logico `and`.
 
 ---
 
@@ -220,8 +202,6 @@ Dati in ingresso due valori, l'algoritmo analizza un valore alla volta e lo aggi
 
 **Suggerimento:** usa un **accumulatore** `somma ← 0`, poi controlla un valore alla volta e, se è pari, aggiungilo.
 
-**Verso Python:** `somma += a`, due `if` separati (non `elif`!).
-
 ---
 
 ### S1-E10: Mostrare Solo i Valori Dispari (flag)
@@ -240,8 +220,6 @@ Dati in ingresso due valori, l'algoritmo mostra in output solo quelli che risult
 </details>
 
 **Suggerimento:** usa un **flag** `trovato ← Falso` e mettilo a Vero quando mostri un valore.
-
-**Verso Python:** variabili booleane `True` / `False`, `if not trovato:`.
 
 ---
 
@@ -262,8 +240,6 @@ Dati in ingresso due valori, l'algoritmo conta quanti di essi sono dispari e mos
 
 **Per riflettere:** confronta con S1-E9. Qual è la differenza tra un contatore e un accumulatore?
 
-**Verso Python:** `conta += 1`.
-
 ---
 
 ### S1-E12: Il Maggiore tra Tre Numeri
@@ -283,8 +259,6 @@ Dati tre numeri in ingresso, l'algoritmo ne confronta i valori e fornisce in out
 
 **Sfida:** risolvi l'esercizio in due modi: con selezioni annidate e con condizioni composte (`and`). Quale flowchart è più leggibile?
 
-**Verso Python:** `if` annidati, `and`. *(Esiste anche `max(a, b, c)`, ma qui l'obiettivo è costruire la logica.)*
-
 ---
 
 ### S1-E13: Somma dei Numeri Pari e Positivi
@@ -301,8 +275,6 @@ Dati tre numeri, l'algoritmo verifica per ciascuno se è **contemporaneamente** 
 | -4, 2, 8 | 10 |
 
 </details>
-
-**Verso Python:** `if x > 0 and x % 2 == 0:`.
 
 ---
 
@@ -323,8 +295,6 @@ Dato un numero intero di due cifre (da 10 a 99), l'algoritmo ricava e mostra la 
 
 **Suggerimento:** decine = divisione intera per 10; unità = resto della divisione per 10.
 
-**Verso Python:** divisione intera `//`, resto `%`.
-
 ---
 
 ## SEZIONE 2 – Strutture Iterative
@@ -342,8 +312,6 @@ Usando un ciclo con una variabile contatore, l'algoritmo mostra in sequenza i nu
 
 </details>
 
-**Verso Python:** `for i in range(0, 4):` (il 4 è escluso!).
-
 ---
 
 ### S2-E2: Numeri Pari da 0 a 5
@@ -358,8 +326,6 @@ L'algoritmo esegue un ciclo da 0 a 5 e mostra in output solo i numeri pari incon
 </details>
 
 **Sfida:** risolvilo in due modi: (1) ciclo di passo 1 con controllo del resto; (2) ciclo di passo 2, senza controllo. Quale fa meno operazioni?
-
-**Verso Python:** `range(0, 6)` con `if`, oppure `range(0, 6, 2)`.
 
 ---
 
@@ -376,8 +342,6 @@ L'algoritmo esegue un ciclo per calcolare e mostrare la somma di tutti i numeri 
 
 **Per riflettere:** la formula di Gauss n·(n+1)/2 dà lo stesso risultato. Usala per verificare il tuo algoritmo.
 
-**Verso Python:** accumulatore dentro un `for`.
-
 ---
 
 ### S2-E4: Somma dei Numeri Dispari da 5 a 15
@@ -391,8 +355,6 @@ L'algoritmo esegue un ciclo da 5 a 15, controlla per ogni numero se è dispari e
 
 </details>
 
-**Verso Python:** `range(5, 16)`.
-
 ---
 
 ### S2-E5: Quanti Multipli di 3?
@@ -405,8 +367,6 @@ L'algoritmo conta quanti numeri da 1 a 30 sono multipli di 3 e mostra il risulta
 **Risultato atteso:** 10
 
 </details>
-
-**Verso Python:** contatore dentro un `for`, `if i % 3 == 0:`.
 
 ---
 
@@ -425,8 +385,6 @@ L'utente indica quanti numeri vuole inserire, poi li inserisce uno alla volta. A
 </details>
 
 **Suggerimento:** non inizializzare il massimo a 0: con il secondo caso prova otterresti un risultato sbagliato. Usa il **primo numero inserito** come massimo iniziale.
-
-**Verso Python:** `for` con `input()` dentro il ciclo.
 
 ---
 
@@ -448,8 +406,6 @@ Dato un numero intero positivo inserito dall'utente, l'algoritmo calcola e mostr
 
 </details>
 
-**Verso Python:** `while x <= 0:` per la validazione, poi `for i in range(0, x + 1):`.
-
 ---
 
 ### S2-E8: C'è un Numero Negativo?
@@ -467,8 +423,6 @@ L'utente indica quanti numeri vuole inserire, poi li inserisce uno alla volta. A
 </details>
 
 **Suggerimento:** usa un **flag**. Attenzione: una volta messo a Vero, non deve tornare Falso.
-
-**Verso Python:** variabile booleana dentro un `for`.
 
 ---
 
@@ -522,8 +476,6 @@ Dato un numero inserito dall'utente, l'algoritmo mostra la sua tabellina, moltip
 
 </details>
 
-**Verso Python:** `for i in range(0, 11):`.
-
 ---
 
 ### S3-E4: Ciclo Indefinito (Somma a Oltranza)
@@ -541,29 +493,6 @@ L'utente inserisce numeri uno alla volta e l'algoritmo li somma, continuando fin
 </details>
 
 **Per riflettere:** cosa succede se l'utente inserisce numeri negativi? Il ciclo potrebbe non terminare mai? Proponi una modifica per evitarlo.
-
-**Verso Python:** `while somma <= 100:`.
-
----
-
-## Appendice – Dal Flowchart a Python
-
-| Nel flowchart | In Python |
-|---|---|
-| Input di un numero | `x = int(input("Numero: "))` oppure `float(...)` |
-| Output | `print(x)` |
-| Assegnazione `a ← 5` | `a = 5` |
-| Uguaglianza nella condizione | `==` (un solo `=` è un'assegnazione!) |
-| Diverso | `!=` |
-| Resto della divisione | `%` |
-| Divisione intera | `//` |
-| Decisione con due uscite | `if ... :` / `else:` |
-| Più decisioni in cascata | `if` / `elif` / `else` |
-| E / O / NON | `and` / `or` / `not` |
-| Ciclo con contatore da a a b | `for i in range(a, b + 1):` |
-| Ciclo finché condizione vera | `while condizione:` |
-
-> ⚠️ `input()` restituisce **sempre una stringa**: `"3" + "4"` dà `"34"`, non 7. Ricordati di convertire con `int()` o `float()`.
 
 ---
 
