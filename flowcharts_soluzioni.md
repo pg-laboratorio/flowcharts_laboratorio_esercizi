@@ -1,467 +1,604 @@
+# Soluzioni – Raccolta Esercizi di Algoritmi e Flowchart
 
-# Raccolta Esercizi di Algoritmi e Flowchart
+Soluzioni degli esercizi della raccolta. Prova sempre a risolvere l'esercizio **prima** di guardare la soluzione, poi verifica il tuo flowchart con gli esempi della consegna.
+
+**Convenzioni usate nei diagrammi**
+
+- `←` indica un'assegnazione (`s ← s + x`: "s diventa s + x").
+- `==` indica un confronto di uguaglianza, `!=` "diverso da".
+- `%` è il resto della divisione, `//` la divisione intera.
+- `V` / `F` sono le uscite Vero / Falso di una decisione.
+
+Spesso esiste più di una soluzione corretta: se la tua è diversa ma supera tutti i casi prova, va bene.
 
 ---
 
-## SEZIONE 1: Algoritmi Sequenziali e Condizionali Semplici
+## SEZIONE 1 – Sequenza e Selezione
 
-### Esercizio 1: Calcolo dell'Area di un Rettangolo
-Algoritmo che, dati i due lati di un rettangolo, calcola e fornisce in output l'area.
+### S1-E1: Area di un Rettangolo
+
 * **Dati di input:** base, altezza
 * **Dati di output:** area
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN B<br>IN A/]
-    INPUT --> PROCESS[AREA = B * A]
-    PROCESS --> OUTPUT[/OUT AREA/]
+    START([START]) --> INPUT[/"IN base<br>IN altezza"/]
+    INPUT --> PROC["area ← base * altezza"]
+    PROC --> OUTPUT[/"OUT area"/]
     OUTPUT --> STOP([STOP])
-
-```
-
-### Esercizio 2: Area e Perimetro del Cerchio
-
-Algoritmo che riceve in ingresso il raggio di un cerchio e calcola sia l'area che il perimetro.
-
-* **Dati di input:** raggio
-* **Dati di output:** area, perimetro
-
-```mermaid
-graph TD
-    START([START]) --> INPUT[/IN R/]
-    INPUT --> PROCESS["A = pi * R^2<br>P = 2 * pi * R"]
-    PROCESS --> OUTPUT_A[/OUT A/]
-    PROCESS --> OUTPUT_P[/OUT P/]
-    OUTPUT_A --> STOP([STOP])
-    OUTPUT_P --> STOP
-
-```
-
-### Esercizio 3: Il Maggiore tra Due Numeri
-
-Algoritmo che, dati due numeri diversi, restituisce il valore maggiore.
-
-* **Dati di input:** due numeri x e y
-* **Dati di output:** il numero maggiore
-
-```mermaid
-graph TD
-    START([START]) --> INPUT[/IN X<br>IN Y/]
-    INPUT --> COND{"X > Y"}
-    COND -- V --> OUT_X[/OUT X/]
-    COND -- F --> OUT_Y[/OUT Y/]
-    OUT_X --> STOP([STOP])
-    OUT_Y --> STOP
-
-```
-
-### Esercizio 4: Calcolo Costo Visita Museo e Controllo Budget
-
-Algoritmo che calcola il costo totale della visita per un gruppo di studenti. Nel caso in cui il costo sia superiore a 100, segnala un avviso di "Over Budget".
-
-* **Dati di input:** numero studenti (n), prezzo biglietto (p)
-* **Dati di output:** costo totale (c), avviso
-
-```mermaid
-graph TD
-    START([START]) --> INPUT[/IN n<br>IN p/]
-    INPUT --> PROCESS[c = n * p]
-    PROCESS --> COND{"c > 100"}
-    COND -- V --> OUT_WARN[/OUT "Over Budget"/]
-    COND -- F --> OUT_C[/OUT c/]
-    OUT_WARN --> OUT_C
-    OUT_C --> STOP([STOP])
-
 ```
 
 ---
 
-### Esercizio 5: Differenza o Somma con Convalida dell'Input
+### S1-E2: Area e Lunghezza della Circonferenza
 
-Dati in ingresso due valori diversi, l'algoritmo calcola e fornisce in output la loro differenza se il primo è maggiore del secondo, altrimenti la loro somma. Include una deviazione di controllo per verificare che i valori inseriti non siano uguali.
-
-* **Dati di input:** x e y
-* **Dati di output:** d (differenza) oppure s (somma)
+* **Dati di input:** raggio r
+* **Dati di output:** area del cerchio, lunghezza della circonferenza circ
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN x<br>IN y/]
+    START([START]) --> INPUT[/"IN r"/]
+    INPUT --> PROC["area ← π * r * r<br>circ ← 2 * π * r"]
+    PROC --> OUTPUT[/"OUT area<br>OUT circ"/]
+    OUTPUT --> STOP([STOP])
+```
+
+**Nota:** in un flowchart il flusso non si divide mai senza un rombo: i due output sono in sequenza. Per il quadrato del raggio usa `r * r`.
+
+---
+
+### S1-E3: Il Maggiore tra Due Numeri
+
+* **Dati di input:** due numeri x, y
+* **Dati di output:** il maggiore, oppure il messaggio "I numeri sono uguali"
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> C1{"x > y"}
+    C1 -- V --> OX[/"OUT x"/]
+    C1 -- F --> C2{"x < y"}
+    C2 -- V --> OY[/"OUT y"/]
+    C2 -- F --> OEQ[/"OUT 'I numeri sono uguali'"/]
+    OX --> STOP([STOP])
+    OY --> STOP
+    OEQ --> STOP
+```
+
+---
+
+### S1-E4: Costo Visita al Museo e Controllo Budget
+
+* **Dati di input:** numero di studenti n, prezzo del biglietto p
+* **Dati di output:** costo totale c, eventuale avviso "Over Budget"
+
+```mermaid
+graph TD
+    START([START]) --> INIT["BUDGET ← 100"]
+    INIT --> INPUT[/"IN n<br>IN p"/]
+    INPUT --> PROC["c ← n * p"]
+    PROC --> OC[/"OUT c"/]
+    OC --> COND{"c > BUDGET"}
+    COND -- V --> WARN[/"OUT 'Over Budget'"/]
+    COND -- F --> STOP([STOP])
+    WARN --> STOP
+```
+
+**Nota:** con `n = 20` e `p = 5` il costo è esattamente 100 e l'avviso **non** compare, perché la condizione è `>`.
+
+---
+
+### S1-E5: Differenza o Somma con Convalida dell'Input
+
+* **Dati di input:** due valori x, y
+* **Dati di output:** differenza d oppure somma s, oppure messaggio di errore
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
     INPUT --> CHK{"x == y"}
-    CHK -- V --> ERR[/OUT "Attenzione, inserisci due valori diversi"/]
-    ERR --> INPUT
+    CHK -- V --> ERR[/"OUT 'Errore: i valori devono essere diversi'"/]
     CHK -- F --> COND{"x > y"}
-    COND -- V --> DIFF[d = x - y]
-    COND -- F --> SOMMA[s = x + y]
-    DIFF --> OUT_D[/OUT d/]
-    SOMMA --> OUT_S[/OUT S/]
-    OUT_D --> STOP([STOP])
-    OUT_S --> STOP
-
+    COND -- V --> DIFF["d ← x - y"]
+    COND -- F --> SOMMA["s ← x + y"]
+    DIFF --> OD[/"OUT d"/]
+    SOMMA --> OS[/"OUT s"/]
+    ERR --> STOP([STOP])
+    OD --> STOP
+    OS --> STOP
 ```
 
-### Esercizio 6: Moltiplicazione o Selezione Valore in Base al Segno
+**Nota:** l'algoritmo termina dopo l'errore. Una freccia che torna all'input formerebbe un ciclo, che vedremo nella Sezione 2.
 
-Dati in ingresso due valori, se il primo valore è positivo l'algoritmo fornisce in output la loro moltiplicazione, altrimenti se il primo valore è negativo manda in output direttamente il secondo valore.
+---
 
-* **Dati di input:** x e y
-* **Dati di output:** m (moltiplicazione) oppure y
+### S1-E6: Moltiplicazione o Selezione in Base al Segno
+
+* **Dati di input:** due valori x, y
+* **Dati di output:** prodotto m oppure y, oppure messaggio "Il primo valore è zero"
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN x<br>IN y/]
-    INPUT --> COND{"x > 0"}
-    COND -- V --> MULT[m = x * y]
-    COND -- F --> OUT_Y[/OUT y/]
-    MULT --> OUT_M[/OUT m/]
-    OUT_M --> STOP([STOP])
-    OUT_Y --> STOP
-
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> C1{"x > 0"}
+    C1 -- V --> MULT["m ← x * y"]
+    MULT --> OM[/"OUT m"/]
+    C1 -- F --> C2{"x < 0"}
+    C2 -- V --> OY[/"OUT y"/]
+    C2 -- F --> OZ[/"OUT 'Il primo valore è zero'"/]
+    OM --> STOP([STOP])
+    OY --> STOP
+    OZ --> STOP
 ```
 
-### Esercizio 7: Controllo Pari o Dispari
+---
 
-Dato in ingresso un valore che deve essere diverso da 0, l'algoritmo restituisce se tale numero è pari o dispari.
+### S1-E7: Pari o Dispari
 
-* **Dati di input:** un valore x
-* **Dati di output:** messaggio "Pari" o "Dispari"
+* **Dati di input:** un numero intero x
+* **Dati di output:** messaggio "pari" o "dispari", oppure messaggio di errore
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN x/]
-    INPUT --> CHK{"x == 0"}
-    CHK -- V --> ERR[/OUT "Inserisci un numero != da 0"/]
-    ERR --> INPUT
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> CHK{"x <= 0"}
+    CHK -- V --> ERR[/"OUT 'Errore: inserire un numero positivo'"/]
     CHK -- F --> COND{"x % 2 == 0"}
-    COND -- V --> PARI[/OUT "Pari"/]
-    COND -- F --> DISPARI[/OUT "Dispari"/]
-    PARI --> STOP([STOP])
+    COND -- V --> PARI[/"OUT 'pari'"/]
+    COND -- F --> DISPARI[/"OUT 'dispari'"/]
+    ERR --> STOP([STOP])
+    PARI --> STOP
     DISPARI --> STOP
-
 ```
 
 ---
 
-### Esercizio 8: Somma Valori Esclusivamente Positivi
+### S1-E8: Somma di Valori Esclusivamente Positivi
 
-Dati in ingresso due valori qualsiasi, l'algoritmo fornisce in output i valori sommati solo se entrambi sono maggiori di 0, altrimenti segnala errore.
-
-* **Dati di input:** X, Y
-* **Dati di output:** Somma o messaggio "Errore"
+* **Dati di input:** due valori x, y
+* **Dati di output:** somma s oppure messaggio "Errore"
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN X<br>IN Y/]
-    INPUT --> COND{"X > 0 AND Y > 0"}
-    COND -- V --> PROCESS[S = X + Y]
-    COND -- F --> ERR[/OUT "Errore"/]
-    PROCESS --> OUT_S[/OUT S/]
-    ERR --> INPUT
-    OUT_S --> STOP([STOP])
-
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> COND{"x > 0 AND y > 0"}
+    COND -- V --> PROC["s ← x + y"]
+    PROC --> OS[/"OUT s"/]
+    COND -- F --> ERR[/"OUT 'Errore'"/]
+    OS --> STOP([STOP])
+    ERR --> STOP
 ```
 
-### Esercizio 9: Somma Selettiva dei Valori Pari
+---
 
-Dati in ingresso due valori, l'algoritmo analizza i singoli elementi inseriti e ne accumula il valore solo se si tratta di numeri pari.
+### S1-E9: Somma dei Valori Pari (accumulatore)
 
-* **Dati di input:** X, Y
-* **Dati di output:** Somma totale dei valori pari S
+* **Dati di input:** due valori x, y
+* **Dati di output:** somma s dei valori pari
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN X<br>IN Y/]
-    INPUT --> INIT[S = 0]
-    INIT --> CHK_X{"X % 2 == 0"}
-    CHK_X -- V --> ADD_X[S = S + X]
-    CHK_X -- F --> CHK_Y{"Y % 2 == 0"}
-    ADD_X --> CHK_Y
-    CHK_Y -- V --> ADD_Y[S = S + Y]
-    CHK_Y -- F --> OUTPUT[/OUT S/]
-    ADD_Y --> OUTPUT
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> INIT["s ← 0"]
+    INIT --> CX{"x % 2 == 0"}
+    CX -- V --> AX["s ← s + x"]
+    CX -- F --> CY{"y % 2 == 0"}
+    AX --> CY
+    CY -- V --> AY["s ← s + y"]
+    CY -- F --> OUTPUT[/"OUT s"/]
+    AY --> OUTPUT
     OUTPUT --> STOP([STOP])
-
 ```
+
+**Nota:** i due controlli sono **indipendenti**: dopo aver controllato x si controlla sempre anche y.
 
 ---
 
-### Esercizio 10: Output Esclusivo di Valori Dispari
+### S1-E10: Mostrare Solo i Valori Dispari (flag)
 
-Dati in ingresso due valori, l'algoritmo esegue un controllo di disparità e fornisce in output solo i valori che risultano dispari.
-
-* **Dati di input:** due valori (x, y)
-* **Dati di output:** i singoli valori dispari identificati
+* **Dati di input:** due valori x, y
+* **Dati di output:** i valori dispari, oppure messaggio "Nessun valore dispari"
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN x<br>IN y/]
-    INPUT --> CHK_X{"x % 2 == 1"}
-    CHK_X -- V --> OUT_X[/OUT x/]
-    CHK_X -- F --> CHK_Y{"y % 2 == 1"}
-    OUT_X --> CHK_Y
-    CHK_Y -- V --> OUT_Y[/OUT y/]
-    CHK_Y -- F --> STOP([STOP])
-    OUT_Y --> STOP
-
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> INIT["trovato ← Falso"]
+    INIT --> CX{"x % 2 != 0"}
+    CX -- V --> OX[/"OUT x"/]
+    OX --> TX["trovato ← Vero"]
+    TX --> CY{"y % 2 != 0"}
+    CX -- F --> CY
+    CY -- V --> OY[/"OUT y"/]
+    OY --> TY["trovato ← Vero"]
+    TY --> CF{"NOT trovato"}
+    CY -- F --> CF
+    CF -- V --> ON[/"OUT 'Nessun valore dispari'"/]
+    CF -- F --> STOP([STOP])
+    ON --> STOP
 ```
 
-### Esercizio 11: Calcolo Somma dei Valori Dispari
+**Nota:** per riconoscere un dispari usiamo `x % 2 != 0` invece di `x % 2 == 1`. In alcuni linguaggi di programmazione il resto di un numero negativo è negativo (`-3 % 2` vale `-1`) e il controllo `== 1` fallirebbe.
 
-Dati in ingresso due valori, l'algoritmo effettua una verifica e restituisce la somma cumulativa dei soli valori inseriti che risultano dispari.
+---
 
-* **Dati di input:** due valori (x, y)
-* **Dati di output:** la somma dei valori dispari sd
+### S1-E11: Contare i Valori Dispari (contatore)
+
+* **Dati di input:** due valori x, y
+* **Dati di output:** numero conta di valori dispari
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN x<br>IN y/]
-    INPUT --> INIT[sd = 0]
-    INIT --> CHK_X{"x % 2 == 1"}
-    CHK_X -- V --> ADD_X[sd = sd + x]
-    CHK_X -- F --> CHK_Y{"y % 2 == 1"}
-    ADD_X --> CHK_Y
-    CHK_Y -- V --> ADD_Y[sd = sd + y]
-    CHK_Y -- F --> OUTPUT[/OUT sd/]
-    ADD_Y --> OUTPUT
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> INIT["conta ← 0"]
+    INIT --> CX{"x % 2 != 0"}
+    CX -- V --> AX["conta ← conta + 1"]
+    CX -- F --> CY{"y % 2 != 0"}
+    AX --> CY
+    CY -- V --> AY["conta ← conta + 1"]
+    CY -- F --> OUTPUT[/"OUT conta"/]
+    AY --> OUTPUT
     OUTPUT --> STOP([STOP])
+```
 
+**Nota:** confronta con S1-E9. La struttura è identica; cambia solo cosa si aggiunge: il **valore** (accumulatore) oppure **1** (contatore).
+
+---
+
+### S1-E12: Il Maggiore tra Tre Numeri
+
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** il valore massimo
+
+**Soluzione A – condizioni composte**
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> C1{"x >= y AND x >= z"}
+    C1 -- V --> OX[/"OUT x"/]
+    C1 -- F --> C2{"y >= z"}
+    C2 -- V --> OY[/"OUT y"/]
+    C2 -- F --> OZ[/"OUT z"/]
+    OX --> STOP([STOP])
+    OY --> STOP
+    OZ --> STOP
+```
+
+**Soluzione B – selezioni annidate**
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> C1{"x >= y"}
+    C1 -- V --> C2{"x >= z"}
+    C1 -- F --> C3{"y >= z"}
+    C2 -- V --> OX[/"OUT x"/]
+    C2 -- F --> OZ1[/"OUT z"/]
+    C3 -- V --> OY[/"OUT y"/]
+    C3 -- F --> OZ2[/"OUT z"/]
+    OX --> STOP([STOP])
+    OZ1 --> STOP
+    OY --> STOP
+    OZ2 --> STOP
+```
+
+**Nota:** si usa `>=` e non `>`. Con `>` e l'input 7, 7, 2 nessuna condizione sarebbe vera e l'algoritmo non mostrerebbe nulla. Nella Soluzione A, se x non è il massimo, il massimo è per forza y oppure z: basta confrontare loro due.
+
+---
+
+### S1-E13: Somma dei Numeri Pari e Positivi
+
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** somma s dei numeri pari e maggiori di zero
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> INIT["s ← 0"]
+    INIT --> CX{"x > 0 AND x % 2 == 0"}
+    CX -- V --> AX["s ← s + x"]
+    CX -- F --> CY{"y > 0 AND y % 2 == 0"}
+    AX --> CY
+    CY -- V --> AY["s ← s + y"]
+    CY -- F --> CZ{"z > 0 AND z % 2 == 0"}
+    AY --> CZ
+    CZ -- V --> AZ["s ← s + z"]
+    CZ -- F --> OUTPUT[/"OUT s"/]
+    AZ --> OUTPUT
+    OUTPUT --> STOP([STOP])
 ```
 
 ---
 
-### Esercizio 12: Il Maggiore tra Tre Numeri
+### S1-E14: Decine e Unità
 
-Dati tre numeri in ingresso, l'algoritmo analizza le relazioni d'ordine tramite condizioni logiche e fornisce in output il valore massimo.
+* **Dati di input:** un numero intero n
+* **Dati di output:** cifra delle decine d, cifra delle unità u, somma s, oppure messaggio "Errore"
 
-* **Dati di input:** tre valori (x, y, z)
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN n"/]
+    INPUT --> CHK{"n < 10 OR n > 99"}
+    CHK -- V --> ERR[/"OUT 'Errore'"/]
+    CHK -- F --> PROC["d ← n // 10<br>u ← n % 10<br>s ← d + u"]
+    PROC --> OUTPUT[/"OUT d<br>OUT u<br>OUT s"/]
+    ERR --> STOP([STOP])
+    OUTPUT --> STOP
+```
+
+---
+
+## SEZIONE 2 – Strutture Iterative
+
+### Parte A – Cicli a conteggio
+
+### S2-E1: Numeri da 0 a 3
+
+* **Dati di input:** nessuno
+* **Dati di output:** i numeri da 0 a 3
+
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0"]
+    INIT --> COND{"i <= 3"}
+    COND -- V --> OUTPUT[/"OUT i"/]
+    OUTPUT --> INC["i ← i + 1"]
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
+
+---
+
+### S2-E2: Numeri Pari da 0 a 5
+
+* **Dati di input:** nessuno
+* **Dati di output:** i numeri pari da 0 a 5
+
+**Soluzione A – passo 1 con controllo**
+
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0"]
+    INIT --> COND{"i <= 5"}
+    COND -- V --> CHK{"i % 2 == 0"}
+    CHK -- V --> OUTPUT[/"OUT i"/]
+    CHK -- F --> INC["i ← i + 1"]
+    OUTPUT --> INC
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
+
+**Soluzione B – passo 2, senza controllo**
+
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0"]
+    INIT --> COND{"i <= 5"}
+    COND -- V --> OUTPUT[/"OUT i"/]
+    OUTPUT --> INC["i ← i + 2"]
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
+
+**Nota:** la Soluzione A esegue 6 iterazioni e 6 controlli, la B solo 3 iterazioni. Il risultato è lo stesso.
+
+---
+
+### S2-E3: Somma dei Numeri da 0 a 10
+
+* **Dati di input:** nessuno
+* **Dati di output:** somma s
+
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0<br>s ← 0"]
+    INIT --> COND{"i <= 10"}
+    COND -- V --> PROC["s ← s + i"]
+    PROC --> INC["i ← i + 1"]
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT s"/]
+    OUTPUT --> STOP([STOP])
+```
+
+---
+
+### S2-E4: Somma dei Numeri Dispari da 5 a 15
+
+* **Dati di input:** nessuno
+* **Dati di output:** somma sd dei numeri dispari
+
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 5<br>sd ← 0"]
+    INIT --> COND{"i <= 15"}
+    COND -- V --> CHK{"i % 2 != 0"}
+    CHK -- V --> PROC["sd ← sd + i"]
+    CHK -- F --> INC["i ← i + 1"]
+    PROC --> INC
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT sd"/]
+    OUTPUT --> STOP([STOP])
+```
+
+---
+
+### S2-E5: Quanti Multipli di 3?
+
+* **Dati di input:** nessuno
+* **Dati di output:** numero conta di multipli di 3
+
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 1<br>conta ← 0"]
+    INIT --> COND{"i <= 30"}
+    COND -- V --> CHK{"i % 3 == 0"}
+    CHK -- V --> PROC["conta ← conta + 1"]
+    CHK -- F --> INC["i ← i + 1"]
+    PROC --> INC
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT conta"/]
+    OUTPUT --> STOP([STOP])
+```
+
+---
+
+### S2-E6: Il Massimo tra N Numeri
+
+* **Dati di input:** quantità di numeri N, poi N numeri x
 * **Dati di output:** il valore massimo max
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN X<br>IN Y<br>IN Z/]
-    INPUT --> COND1{"X > Y AND X > Z"}
-    COND1 -- V --> OUT_X[/OUT X/]
-    COND1 -- F --> COND2{"Y > X AND Y > Z"}
-    COND2 -- V --> OUT_Y[/OUT Y/]
-    COND2 -- F --> COND3{"Z > X AND Z > Y"}
-    COND3 -- V --> OUT_Z[/OUT Z/]
-    COND3 -- F --> STOP([STOP])
-    OUT_X --> STOP
-    OUT_Y --> STOP
-    OUT_Z --> STOP
-
-```
-
-### Esercizio 13: Somma dei Numeri Pari Maggiori di Zero
-
-Dati tre numeri, l'algoritmo verifica per ciascuno se rispetta contemporaneamente la condizione di essere maggiore di zero e un numero pari, calcolandone e restituendone la somma cumulativa.
-
-* **Dati di input:** tre numeri
-* **Dati di output:** la somma dei numeri conformi alle specifiche
-
-```mermaid
-graph TD
-    START([START]) --> INPUT[/IN X<br>IN Y<br>IN Z/]
-    INPUT --> INIT[S = 0]
-    INIT --> CHK_X{"X > 0 AND X % 2 == 0"}
-    CHK_X -- V --> ADD_X[S = S + X]
-    CHK_X -- F --> CHK_Y{"Y > 0 AND Y % 2 == 0"}
-    ADD_X --> CHK_Y
-    CHK_Y -- V --> ADD_Y[S = S + Y]
-    CHK_Y -- F --> CHK_Z{"Z > 0 AND Z % 2 == 0"}
-    ADD_Y --> CHK_Z
-    CHK_Z -- V --> ADD_Z[S = S + Z]
-    CHK_Z -- F --> OUTPUT[/OUT S/]
-    ADD_Z --> OUTPUT
+    START([START]) --> INN[/"IN N"/]
+    INN --> IN1[/"IN x"/]
+    IN1 --> INIT["max ← x<br>i ← 2"]
+    INIT --> COND{"i <= N"}
+    COND -- V --> INX[/"IN x"/]
+    INX --> CHK{"x > max"}
+    CHK -- V --> UPD["max ← x"]
+    CHK -- F --> INC["i ← i + 1"]
+    UPD --> INC
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT max"/]
     OUTPUT --> STOP([STOP])
-
 ```
+
+**Nota:** il primo numero viene letto **prima** del ciclo e diventa il massimo iniziale, quindi il contatore parte da 2. Si assume N ≥ 1.
 
 ---
 
-## SEZIONE 2 - Strutture Iterattive
+### Parte B – Cicli indefiniti
 
-### Esercizio 1: Iterazione Numeri da 0 a 3
+### S2-E7: Somma da 0 a x con Validazione
 
-Esempio base di applicazione di un ciclo definito tramite una variabile contatore per inviare in output i numeri in sequenza da 0 a 3 compreso.
-
-* **Dati di input:** nessuno
-* **Dati di output:** i singoli numeri da 0 a 3
+* **Dati di input:** un numero x (da validare)
+* **Dati di output:** somma s
 
 ```mermaid
 graph TD
-    START([START]) --> INIT[i = 0]
-    INIT --> COND{"i <= 3"}
-    COND -- V --> OUTPUT[/OUT i/]
-    OUTPUT --> INC[i = i + 1]
-    INC --> COND
-    COND -- F --> STOP([STOP])
-
-```
-
-### Esercizio 2: Output Numeri Pari da 0 a 5
-
-L'algoritmo esegue un ciclo da 0 a 5 integrando un controllo interno per individuare e stampare in output esclusivamente i valori pari incontrati durante l'iterazione.
-
-* **Dati di input:** nessuno
-* **Dati di output:** i numeri pari compresi nell'intervallo esaminato
-
-```mermaid
-graph TD
-    START([START]) --> INIT[i = 0]
-    INIT --> COND{"i <= 5"}
-    COND -- V --> CHK{"i % 2 == 0"}
-    CHK -- V --> OUTPUT[/OUT i/]
-    CHK -- F --> INC[i = i + 1]
-    OUTPUT --> INC
-    INC --> COND
-    COND -- F --> STOP([STOP])
-
-```
-
----
-
-### Esercizio 3: Somma Progressiva dei Numeri da 0 a 10
-
-L'algoritmo esegue un ciclo iterativo per calcolare e restituire la somma cumulativa di tutti i numeri interi compresi nell'intervallo tra 0 e 10.
-
-* **Dati di input:** nessuno
-* **Dati di output:** la somma complessiva s
-
-```mermaid
-graph TD
-    START([START]) --> INIT["i = 0<br>s = 0"]
-    INIT --> COND{"i <= 10"}
-    COND -- V --> PROCESS[s = s + i]
-    PROCESS --> INC[i = i + 1]
-    INC --> COND
-    COND -- F --> OUTPUT[/OUT s/]
-    OUTPUT --> STOP([STOP])
-
-```
-
-### Esercizio 4: Somma dei Numeri Dispari da 5 a 15
-
-L'algoritmo esegue un conteggio ciclico a partire dal valore iniziale 5 fino al limite 15, verificando la disparità di ogni elemento e accumulandone il valore della somma.
-
-* **Dati di input:** nessuno
-* **Dati di output:** la somma finale dei numeri dispari sd
-
-```mermaid
-graph TD
-    START([START]) --> INIT["i = 5<br>sd = 0"]
-    INIT --> COND{"i <= 15"}
-    COND -- V --> CHK{"i % 2 == 1"}
-    CHK -- V --> PROCESS[sd = sd + i]
-    CHK -- F --> INC[i = i + 1]
-    PROCESS --> INC
-    INC --> COND
-    COND -- F --> OUTPUT[/OUT sd/]
-    OUTPUT --> STOP([STOP])
-
-```
-
----
-
-### Esercizio 5: Somma Iterativa Fino a un Limite x Definito dall'Utente
-
-Dato un numero positivo in ingresso, l'algoritmo esegue un ciclo per calcolare e stampare in output la somma di tutti i valori compresi tra 0 e quel numero. Include un ciclo di validazione iniziale (ciclo while) per garantire la positività dell'input.
-
-* **Dati di input:** un valore x
-* **Dati di output:** la somma progressiva calcolata s
-
-```mermaid
-graph TD
-    START([START]) --> INPUT[/IN x/]
-    INPUT --> CHK{"x < 0"}
-    CHK -- V --> ERR[/OUT "Inserisci un numero positivo"/]
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> CHK{"x <= 0"}
+    CHK -- V --> ERR[/"OUT 'Inserisci un numero positivo'"/]
     ERR --> INPUT
-    CHK -- F --> INIT["i = 0<br>s = 0"]
+    CHK -- F --> INIT["i ← 0<br>s ← 0"]
     INIT --> COND{"i <= x"}
-    COND -- V --> PROCESS[s = s + i]
-    PROCESS --> INC[i = i + 1]
+    COND -- V --> PROC["s ← s + i"]
+    PROC --> INC["i ← i + 1"]
     INC --> COND
-    COND -- F --> OUTPUT[/OUT s/]
+    COND -- F --> OUTPUT[/"OUT s"/]
     OUTPUT --> STOP([STOP])
+```
 
+**Nota:** la freccia che da `ERR` torna all'input forma il ciclo di validazione: si ripete **finché** x non è positivo.
+
+---
+
+### S2-E8: C'è un Numero Negativo?
+
+* **Dati di input:** quantità di numeri N, poi N numeri x
+* **Dati di output:** messaggio "Presente almeno un negativo" o "Nessun negativo"
+
+```mermaid
+graph TD
+    START([START]) --> INN[/"IN N"/]
+    INN --> INIT["neg ← Falso<br>i ← 1"]
+    INIT --> COND{"i <= N"}
+    COND -- V --> INX[/"IN x"/]
+    INX --> CHK{"x < 0"}
+    CHK -- V --> FLAG["neg ← Vero"]
+    CHK -- F --> INC["i ← i + 1"]
+    FLAG --> INC
+    INC --> COND
+    COND -- F --> CF{"neg"}
+    CF -- V --> OP[/"OUT 'Presente almeno un negativo'"/]
+    CF -- F --> ON[/"OUT 'Nessun negativo'"/]
+    OP --> STOP([STOP])
+    ON --> STOP
+```
+
+**Nota:** il flag viene messo a Vero, ma non viene mai rimesso a Falso dentro il ciclo, altrimenti un numero positivo successivo "cancellerebbe" il negativo trovato.
+
+---
+
+## SEZIONE 3 – Ripasso: i Quattro Schemi Fondamentali
+
+### S3-E1: Sequenza
+
+* **Dati di input:** due valori x, y
+* **Dati di output:** somma s, prodotto m
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> PROC["s ← x + y<br>m ← x * y"]
+    PROC --> OUTPUT[/"OUT s<br>OUT m"/]
+    OUTPUT --> STOP([STOP])
 ```
 
 ---
 
-## SEZIONE 3 - Ripasso Generale
+### S3-E2: Selezione
 
-### Esercizio 1: Algoritmo Sequenziale Puro
-
-Esempio di struttura lineare in sequenza che riceve due valori in ingresso, calcola contemporaneamente la loro somma e la loro moltiplicazione, emettendo entrambi i risultati in output.
-
-* **Dati di input:** due valori (x, y)
-* **Dati di output:** somma (s) e moltiplicazione (m)
-
-```mermaid
-graph LR
-    START([START]) --> INPUT[/IN x<br>IN y/]
-    INPUT --> PROCESS["s = x + y<br>m = x * y"]
-    PROCESS --> OUTPUT[/OUT s<br>OUT m/]
-    OUTPUT --> STOP([STOP])
-
-```
-
-### Esercizio 2: Algoritmo di Selezione Condizionale
-
-Struttura a selezione condizionale che valuta il valore di un'età inserita in ingresso per stabilire e comunicare testualmente se la persona è maggiorenne o minorenne.
-
-* **Dati di input:** età
-* **Dati di output:** stringa di messaggio "Maggiorenne" o "Minorenne"
+* **Dati di input:** età eta
+* **Dati di output:** messaggio "Maggiorenne" o "Minorenne"
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN età/]
-    INPUT --> COND{"età >= 18"}
-    COND -- V --> OUT_MAG[/OUT "Maggiorenne"/]
-    COND -- F --> OUT_MIN[/OUT "Minorenne"/]
-    OUT_MAG --> STOP([STOP])
-    OUT_MIN --> STOP
-
+    START([START]) --> INPUT[/"IN eta"/]
+    INPUT --> COND{"eta >= 18"}
+    COND -- V --> OMAG[/"OUT 'Maggiorenne'"/]
+    COND -- F --> OMIN[/"OUT 'Minorenne'"/]
+    OMAG --> STOP([STOP])
+    OMIN --> STOP
 ```
 
-### Esercizio 3: Algoritmo di Ciclo Definito (Tabellina)
+**Nota:** nei nomi delle variabili evita lettere accentate (`eta`, non `età`): molti linguaggi non le accettano o le gestiscono male.
 
-Dato un numero x inserito in input, l'algoritmo calcola e restituisce in sequenza i valori della corrispondente tabellina moltiplicando l'input per un contatore che si incrementa da 0 a 10.
+---
+
+### S3-E3: Ciclo Definito (Tabellina)
 
 * **Dati di input:** un numero x
-* **Dati di output:** i singoli valori calcolati della tabellina t
+* **Dati di output:** i valori t della tabellina
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/IN x/]
-    INPUT --> INIT[i = 0]
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> INIT["i ← 0"]
     INIT --> COND{"i <= 10"}
-    COND -- V --> PROCESS[t = x * i]
-    PROCESS --> OUTPUT[/OUT t/]
-    OUTPUT --> INC[i = i + 1]
+    COND -- V --> PROC["t ← x * i"]
+    PROC --> OUTPUT[/"OUT t"/]
+    OUTPUT --> INC["i ← i + 1"]
     INC --> COND
     COND -- F --> STOP([STOP])
-
 ```
 
-### Esercizio 4: Algoritmo di Ciclo Indefinito (Somma ad Oltranza)
+---
 
-L'algoritmo riceve e somma numeri inseriti dall'utente in modo indefinita fino a quando la somma progressiva calcolata supera il valore limite di 100, mostrando poi il risultato finale della somma.
+### S3-E4: Ciclo Indefinito (Somma a Oltranza)
 
-* **Dati di input:** una serie indefinita di valori inseriti x
-* **Dati di output:** la somma complessiva finale s
+* **Dati di input:** una serie di valori x, di lunghezza non nota
+* **Dati di output:** somma s, numero conta di valori inseriti
 
 ```mermaid
 graph TD
-    START([START]) --> INIT[s = 0]
-    INIT --> INPUT[/in x/]
-    INPUT --> PROCESS[s = s + x]
-    PROCESS --> COND{"s <= 100"}
+    START([START]) --> INIT["s ← 0<br>conta ← 0"]
+    INIT --> INPUT[/"IN x"/]
+    INPUT --> PROC["s ← s + x<br>conta ← conta + 1"]
+    PROC --> COND{"s <= 100"}
     COND -- V --> INPUT
-    COND -- F --> OUTPUT[/out s/]
+    COND -- F --> OUTPUT[/"OUT s<br>OUT conta"/]
     OUTPUT --> STOP([STOP])
-
 ```
 
-```
+**Nota:** qui il controllo è **dopo** il corpo del ciclo, quindi almeno un numero viene sempre letto.
 
-```
+**Per riflettere:** se l'utente inserisce solo numeri negativi, `s` non supererà mai 100 e il ciclo non terminerà. Una possibile modifica: accettare solo valori positivi, con un ciclo di validazione come in S2-E7.
+
+---
+
+# Licenza
+
+Questo progetto e i materiali al suo interno sono distribuiti con licenza **[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)** (Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale).
+
+[![CC BY-NC-SA 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
