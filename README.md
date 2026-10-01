@@ -31,7 +31,7 @@ In tutta la raccolta, "da *a* a *b*" significa **estremi inclusi**. Esempio: "da
 | Decisione | Rombo | Condizione con due uscite: Vero / Falso |
 | Flusso | Freccia | Ordine di esecuzione |
 
-Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser) oppure [Flowgorithm](http://www.flowgorithm.org) (permette di eseguire il flowchart e di vederne la traduzione in Python).
+Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser)
 
 ### Tre parole da conoscere
 
