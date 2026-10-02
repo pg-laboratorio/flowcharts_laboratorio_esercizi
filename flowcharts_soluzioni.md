@@ -173,12 +173,12 @@ graph TD
 
 ### S1-E9: Somma dei Valori Assoluti (accumulatore)
 
-* **Dati di input:** tre numeri x, y, z
+* **Dati di input:** due numeri x, y
 * **Dati di output:** somma s dei valori assoluti
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
     INPUT --> INIT["s ← 0"]
     INIT --> CX{"x < 0"}
     CX -- V --> NX["s ← s - x"]
@@ -187,12 +187,8 @@ graph TD
     PX --> CY
     CY -- V --> NY["s ← s - y"]
     CY -- F --> PY["s ← s + y"]
-    NY --> CZ{"z < 0"}
-    PY --> CZ
-    CZ -- V --> NZ["s ← s - z"]
-    CZ -- F --> PZ["s ← s + z"]
-    NZ --> OUTPUT[/"OUT s"/]
-    PZ --> OUTPUT
+    NY --> OUTPUT[/"OUT s"/]
+    PY --> OUTPUT
     OUTPUT --> STOP([STOP])
 ```
 
@@ -202,12 +198,12 @@ graph TD
 
 ### S1-E10: Positivi, Negativi e Nulli (contatore)
 
-* **Dati di input:** tre numeri x, y, z
+* **Dati di input:** due numeri x, y
 * **Dati di output:** numero di positivi pos, di negativi neg, di nulli nul
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
     INPUT --> INIT["pos ← 0<br>neg ← 0<br>nul ← 0"]
     INIT --> CX1{"x > 0"}
     CX1 -- V --> PX["pos ← pos + 1"]
@@ -221,20 +217,13 @@ graph TD
     CY1 -- F --> CY2{"y < 0"}
     CY2 -- V --> NY["neg ← neg + 1"]
     CY2 -- F --> ZY["nul ← nul + 1"]
-    PY --> CZ1{"z > 0"}
-    NY --> CZ1
-    ZY --> CZ1
-    CZ1 -- V --> PZ["pos ← pos + 1"]
-    CZ1 -- F --> CZ2{"z < 0"}
-    CZ2 -- V --> NZ["neg ← neg + 1"]
-    CZ2 -- F --> ZZ["nul ← nul + 1"]
-    PZ --> OUTPUT[/"OUT pos<br>OUT neg<br>OUT nul"/]
-    NZ --> OUTPUT
-    ZZ --> OUTPUT
+    PY --> OUTPUT[/"OUT pos<br>OUT neg<br>OUT nul"/]
+    NY --> OUTPUT
+    ZY --> OUTPUT
     OUTPUT --> STOP([STOP])
 ```
 
-**Nota:** per ogni numero viene incrementato **esattamente uno** dei tre contatori, perché un numero è sempre o positivo, o negativo, o nullo. Per questo la somma dei tre conteggi vale sempre 3. Confronta con S1-E9: la struttura è simile, ma qui si aggiunge sempre **1** invece del valore.
+**Nota:** per ogni numero viene incrementato **esattamente uno** dei tre contatori, perché un numero è sempre o positivo, o negativo, o nullo. Per questo la somma dei tre conteggi vale sempre 2. Confronta con S1-E9: la struttura è simile, ma qui si aggiunge sempre **1** invece del valore.
 
 ---
 
@@ -307,23 +296,20 @@ graph TD
 
 ### S1-E13: Somma dei Numeri Pari e Positivi
 
-* **Dati di input:** tre numeri x, y, z
+* **Dati di input:** due numeri x, y
 * **Dati di output:** somma s dei numeri pari e maggiori di zero
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
     INPUT --> INIT["s ← 0"]
     INIT --> CX{"x > 0 AND x % 2 == 0"}
     CX -- V --> AX["s ← s + x"]
     CX -- F --> CY{"y > 0 AND y % 2 == 0"}
     AX --> CY
     CY -- V --> AY["s ← s + y"]
-    CY -- F --> CZ{"z > 0 AND z % 2 == 0"}
-    AY --> CZ
-    CZ -- V --> AZ["s ← s + z"]
-    CZ -- F --> OUTPUT[/"OUT s"/]
-    AZ --> OUTPUT
+    CY -- F --> OUTPUT[/"OUT s"/]
+    AY --> OUTPUT
     OUTPUT --> STOP([STOP])
 ```
 
