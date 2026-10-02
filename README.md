@@ -29,7 +29,7 @@ In tutta la raccolta, "da *a* a *b*" significa **estremi inclusi**. Esempio: "da
 | Decisione | Rombo | Condizione con due uscite: Vero / Falso |
 | Flusso | Freccia | Ordine di esecuzione |
 
-Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser) oppure [Flowgorithm](http://www.flowgorithm.org) (permette anche di eseguire il flowchart passo per passo).
+Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser).
 
 ### Tre parole da conoscere
 
@@ -187,16 +187,16 @@ Dati in ingresso due valori qualsiasi, l'algoritmo fornisce in output la loro so
 
 ### S1-E9: Somma dei Valori Assoluti (accumulatore)
 
-Dati tre numeri, l'algoritmo calcola e mostra la somma dei loro valori assoluti. Il valore assoluto di un numero è il numero stesso se è positivo o nullo, il suo opposto se è negativo.
+Dati due numeri, l'algoritmo calcola e mostra la somma dei loro valori assoluti. Il valore assoluto di un numero è il numero stesso se è positivo o nullo, il suo opposto se è negativo.
 
 <details>
 <summary>Caso prova</summary>
 
 | Valori inseriti | Risultato atteso |
 |---|---|
-| -3, 4, -5 | 12 |
-| 2, 0, 7 | 9 |
-| -1, -1, -1 | 3 |
+| -3, 4 | 7 |
+| 2, 0 | 2 |
+| -1, -6 | 7 |
 
 </details>
 
@@ -206,20 +206,21 @@ Dati tre numeri, l'algoritmo calcola e mostra la somma dei loro valori assoluti.
 
 ### S1-E10: Positivi, Negativi e Nulli (contatore)
 
-Dati tre numeri, l'algoritmo conta quanti sono positivi, quanti negativi e quanti uguali a zero, e mostra i tre conteggi.
+Dati due numeri, l'algoritmo conta quanti sono positivi, quanti negativi e quanti uguali a zero, e mostra i tre conteggi.
 
 <details>
 <summary>Caso prova</summary>
 
 | Valori inseriti | Risultato atteso |
 |---|---|
-| 3, -1, 0 | positivi 1 · negativi 1 · nulli 1 |
-| 5, 8, 2 | positivi 3 · negativi 0 · nulli 0 |
-| 0, 0, -4 | positivi 0 · negativi 1 · nulli 2 |
+| 3, -1 | positivi 1 · negativi 1 · nulli 0 |
+| 5, 8 | positivi 2 · negativi 0 · nulli 0 |
+| 0, -4 | positivi 0 · negativi 1 · nulli 1 |
+| 0, 0 | positivi 0 · negativi 0 · nulli 2 |
 
 </details>
 
-**Per riflettere:** la somma dei tre conteggi vale sempre 3. Perché? Puoi usare questo fatto per controllare la tua soluzione. Confronta poi con S1-E9: qual è la differenza tra un contatore e un accumulatore?
+**Per riflettere:** la somma dei tre conteggi vale sempre 2. Perché? Puoi usare questo fatto per controllare la tua soluzione. Confronta poi con S1-E9: qual è la differenza tra un contatore e un accumulatore?
 
 ---
 
@@ -266,16 +267,17 @@ Dati tre numeri in ingresso, l'algoritmo ne confronta i valori e fornisce in out
 
 ### S1-E13: Somma dei Numeri Pari e Positivi
 
-Dati tre numeri, l'algoritmo verifica per ciascuno se è **contemporaneamente** maggiore di zero e pari; i numeri che rispettano entrambe le condizioni vengono sommati e alla fine viene mostrata la somma.
+Dati due numeri, l'algoritmo verifica per ciascuno se è **contemporaneamente** maggiore di zero e pari; i numeri che rispettano entrambe le condizioni vengono sommati e alla fine viene mostrata la somma.
 
 <details>
 <summary>Caso prova</summary>
 
 | Valori inseriti | Risultato atteso |
 |---|---|
-| 4, -2, 6 | 10 |
-| 3, 5, 7 | 0 |
-| -4, 2, 8 | 10 |
+| 6, 8 | 14 |
+| 4, -2 | 4 |
+| -4, 2 | 2 |
+| 3, 5 | 0 |
 
 </details>
 
