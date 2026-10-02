@@ -67,24 +67,24 @@ graph TD
 
 ---
 
-### S1-E4: Costo Visita al Museo e Controllo Budget
+### S1-E4: Prodotto e Controllo di Soglia
 
-* **Dati di input:** numero di studenti n, prezzo del biglietto p
-* **Dati di output:** costo totale c, eventuale avviso "Over Budget"
+* **Dati di input:** due numeri x, y
+* **Dati di output:** prodotto p, eventuale messaggio "Soglia superata"
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["BUDGET ← 100"]
-    INIT --> INPUT[/"IN n<br>IN p"/]
-    INPUT --> PROC["c ← n * p"]
-    PROC --> OC[/"OUT c"/]
-    OC --> COND{"c > BUDGET"}
-    COND -- V --> WARN[/"OUT 'Over Budget'"/]
+    START([START]) --> INIT["SOGLIA ← 100"]
+    INIT --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> PROC["p ← x * y"]
+    PROC --> OP[/"OUT p"/]
+    OP --> COND{"p > SOGLIA"}
+    COND -- V --> WARN[/"OUT 'Soglia superata'"/]
     COND -- F --> STOP([STOP])
     WARN --> STOP
 ```
 
-**Nota:** con `n = 20` e `p = 5` il costo è esattamente 100 e l'avviso **non** compare, perché la condizione è `>`.
+**Nota:** con 20 e 5 il prodotto è esattamente 100 e il messaggio **non** compare, perché la condizione è `>`.
 
 ---
 
@@ -171,76 +171,95 @@ graph TD
 
 ---
 
-### S1-E9: Somma dei Valori Pari (accumulatore)
+### S1-E9: Somma dei Valori Assoluti (accumulatore)
 
-* **Dati di input:** due valori x, y
-* **Dati di output:** somma s dei valori pari
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** somma s dei valori assoluti
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
     INPUT --> INIT["s ← 0"]
-    INIT --> CX{"x % 2 == 0"}
-    CX -- V --> AX["s ← s + x"]
-    CX -- F --> CY{"y % 2 == 0"}
-    AX --> CY
-    CY -- V --> AY["s ← s + y"]
-    CY -- F --> OUTPUT[/"OUT s"/]
-    AY --> OUTPUT
+    INIT --> CX{"x < 0"}
+    CX -- V --> NX["s ← s - x"]
+    CX -- F --> PX["s ← s + x"]
+    NX --> CY{"y < 0"}
+    PX --> CY
+    CY -- V --> NY["s ← s - y"]
+    CY -- F --> PY["s ← s + y"]
+    NY --> CZ{"z < 0"}
+    PY --> CZ
+    CZ -- V --> NZ["s ← s - z"]
+    CZ -- F --> PZ["s ← s + z"]
+    NZ --> OUTPUT[/"OUT s"/]
+    PZ --> OUTPUT
     OUTPUT --> STOP([STOP])
 ```
 
-**Nota:** i due controlli sono **indipendenti**: dopo aver controllato x si controlla sempre anche y.
+**Nota:** sottrarre un numero negativo equivale a sommare il suo opposto: se x = -3, `s - x` aggiunge 3. In alternativa si può scrivere `s ← s + (-x)`.
 
 ---
 
-### S1-E10: Mostrare Solo i Valori Dispari (flag)
+### S1-E10: Positivi, Negativi e Nulli (contatore)
 
-* **Dati di input:** due valori x, y
-* **Dati di output:** i valori dispari, oppure messaggio "Nessun valore dispari"
-
-```mermaid
-graph TD
-    START([START]) --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> INIT["trovato ← Falso"]
-    INIT --> CX{"x % 2 != 0"}
-    CX -- V --> OX[/"OUT x"/]
-    OX --> TX["trovato ← Vero"]
-    TX --> CY{"y % 2 != 0"}
-    CX -- F --> CY
-    CY -- V --> OY[/"OUT y"/]
-    OY --> TY["trovato ← Vero"]
-    TY --> CF{"NOT trovato"}
-    CY -- F --> CF
-    CF -- V --> ON[/"OUT 'Nessun valore dispari'"/]
-    CF -- F --> STOP([STOP])
-    ON --> STOP
-```
-
-**Nota:** per riconoscere un dispari usiamo `x % 2 != 0` invece di `x % 2 == 1`. In alcuni linguaggi di programmazione il resto di un numero negativo è negativo (`-3 % 2` vale `-1`) e il controllo `== 1` fallirebbe.
-
----
-
-### S1-E11: Contare i Valori Dispari (contatore)
-
-* **Dati di input:** due valori x, y
-* **Dati di output:** numero conta di valori dispari
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** numero di positivi pos, di negativi neg, di nulli nul
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> INIT["conta ← 0"]
-    INIT --> CX{"x % 2 != 0"}
-    CX -- V --> AX["conta ← conta + 1"]
-    CX -- F --> CY{"y % 2 != 0"}
-    AX --> CY
-    CY -- V --> AY["conta ← conta + 1"]
-    CY -- F --> OUTPUT[/"OUT conta"/]
-    AY --> OUTPUT
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> INIT["pos ← 0<br>neg ← 0<br>nul ← 0"]
+    INIT --> CX1{"x > 0"}
+    CX1 -- V --> PX["pos ← pos + 1"]
+    CX1 -- F --> CX2{"x < 0"}
+    CX2 -- V --> NX["neg ← neg + 1"]
+    CX2 -- F --> ZX["nul ← nul + 1"]
+    PX --> CY1{"y > 0"}
+    NX --> CY1
+    ZX --> CY1
+    CY1 -- V --> PY["pos ← pos + 1"]
+    CY1 -- F --> CY2{"y < 0"}
+    CY2 -- V --> NY["neg ← neg + 1"]
+    CY2 -- F --> ZY["nul ← nul + 1"]
+    PY --> CZ1{"z > 0"}
+    NY --> CZ1
+    ZY --> CZ1
+    CZ1 -- V --> PZ["pos ← pos + 1"]
+    CZ1 -- F --> CZ2{"z < 0"}
+    CZ2 -- V --> NZ["neg ← neg + 1"]
+    CZ2 -- F --> ZZ["nul ← nul + 1"]
+    PZ --> OUTPUT[/"OUT pos<br>OUT neg<br>OUT nul"/]
+    NZ --> OUTPUT
+    ZZ --> OUTPUT
     OUTPUT --> STOP([STOP])
 ```
 
-**Nota:** confronta con S1-E9. La struttura è identica; cambia solo cosa si aggiunge: il **valore** (accumulatore) oppure **1** (contatore).
+**Nota:** per ogni numero viene incrementato **esattamente uno** dei tre contatori, perché un numero è sempre o positivo, o negativo, o nullo. Per questo la somma dei tre conteggi vale sempre 3. Confronta con S1-E9: la struttura è simile, ma qui si aggiunge sempre **1** invece del valore.
+
+---
+
+### S1-E11: Classificazione di un Triangolo
+
+* **Dati di input:** lunghezze dei tre lati a, b, c
+* **Dati di output:** tipo di triangolo (equilatero, isoscele, scaleno) oppure messaggio "Il triangolo non esiste"
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN a<br>IN b<br>IN c"/]
+    INPUT --> C1{"a < b + c AND b < a + c AND c < a + b"}
+    C1 -- F --> ERR[/"OUT 'Il triangolo non esiste'"/]
+    C1 -- V --> C2{"a == b AND b == c"}
+    C2 -- V --> EQ[/"OUT 'equilatero'"/]
+    C2 -- F --> C3{"a == b OR b == c OR a == c"}
+    C3 -- V --> ISO[/"OUT 'isoscele'"/]
+    C3 -- F --> SCA[/"OUT 'scaleno'"/]
+    ERR --> STOP([STOP])
+    EQ --> STOP
+    ISO --> STOP
+    SCA --> STOP
+```
+
+**Nota:** il confronto è stretto (`<`): con i lati 2, 3, 5 si ha 5 = 2 + 3 e i tre segmenti, invece di formare un triangolo, si sovrappongono su una retta. Una curiosità: se le tre disuguaglianze sono vere, i lati sono per forza tutti positivi. Sommando le ultime due, infatti, si ottiene b + c < 2a + b + c, cioè a > 0 (e lo stesso vale per b e c). Non serve quindi un controllo separato.
 
 ---
 
@@ -463,7 +482,7 @@ graph TD
     OUTPUT --> STOP([STOP])
 ```
 
-**Nota:** il primo numero viene letto **prima** del ciclo e diventa il massimo iniziale, quindi il contatore parte da 2. Si assume N ≥ 1.
+**Nota:** il primo numero viene letto **prima** del ciclo e diventa il massimo iniziale, quindi il contatore parte da 2. Il testo garantisce che N ≥ 1: senza questa condizione l'algoritmo leggerebbe un numero anche con N = 0.
 
 ---
 
@@ -539,20 +558,20 @@ graph TD
 
 ### S3-E2: Selezione
 
-* **Dati di input:** età eta
-* **Dati di output:** messaggio "Maggiorenne" o "Minorenne"
+* **Dati di input:** un numero x
+* **Dati di output:** messaggio "Appartiene" o "Non appartiene"
 
 ```mermaid
 graph TD
-    START([START]) --> INPUT[/"IN eta"/]
-    INPUT --> COND{"eta >= 18"}
-    COND -- V --> OMAG[/"OUT 'Maggiorenne'"/]
-    COND -- F --> OMIN[/"OUT 'Minorenne'"/]
-    OMAG --> STOP([STOP])
-    OMIN --> STOP
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> COND{"x >= 0 AND x < 18"}
+    COND -- V --> OA[/"OUT 'Appartiene'"/]
+    COND -- F --> ON[/"OUT 'Non appartiene'"/]
+    OA --> STOP([STOP])
+    ON --> STOP
 ```
 
-**Nota:** nei nomi delle variabili evita lettere accentate (`eta`, non `età`): molti linguaggi non le accettano o le gestiscono male.
+**Nota:** la parentesi quadra indica che l'estremo è incluso (`>=`), quella tonda che è escluso (`<`).
 
 ---
 
