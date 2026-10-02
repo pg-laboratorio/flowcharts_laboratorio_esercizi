@@ -1,43 +1,15 @@
-# Raccolta Esercizi di Algoritmi e Flowchart
+# Soluzioni – Raccolta Esercizi di Algoritmi e Flowchart
 
-Introduzione alla programmazione con i diagrammi di flusso.
+Soluzioni degli esercizi della raccolta. Prova sempre a risolvere l'esercizio **prima** di guardare la soluzione, poi verifica il tuo flowchart con gli esempi della consegna.
 
----
+**Convenzioni usate nei diagrammi**
 
-## Come usare questa raccolta
+- `←` indica un'assegnazione (`s ← s + x`: "s diventa s + x").
+- `==` indica un confronto di uguaglianza, `!=` "diverso da".
+- `%` è il resto della divisione, `//` la divisione intera.
+- `V` / `F` sono le uscite Vero / Falso di una decisione.
 
-1. Leggi con attenzione il testo dell'esercizio.
-2. Prima di disegnare, scrivi i **dati di input** e i **dati di output**.
-3. Disegna il flowchart.
-4. Solo a questo punto apri la sezione **Caso prova** sotto l'esercizio e verifica la soluzione: il tuo flowchart deve produrre esattamente quei risultati.
-
-Alcuni esercizi hanno anche un **Suggerimento**: leggilo solo se sei bloccato.
-
-Gli esercizi sono indicati con un codice univoco: **S1-E7** significa *Sezione 1, Esercizio 7*.
-
-### Convenzione sugli intervalli
-
-In tutta la raccolta, "da *a* a *b*" significa **estremi inclusi**. Esempio: "da 0 a 3" → 0, 1, 2, 3.
-
-### Simboli dei flowchart
-
-| Simbolo | Forma | Uso |
-|---|---|---|
-| Inizio / Fine | Ovale | Primo e ultimo blocco dell'algoritmo |
-| Input / Output | Parallelogramma | Leggere un dato, mostrare un risultato |
-| Elaborazione | Rettangolo | Calcoli e assegnazioni (`area ← base * altezza`) |
-| Decisione | Rombo | Condizione con due uscite: Vero / Falso |
-| Flusso | Freccia | Ordine di esecuzione |
-
-Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser) oppure [Flowgorithm](http://www.flowgorithm.org) (permette anche di eseguire il flowchart passo per passo).
-
-### Tre parole da conoscere
-
-- **Contatore**: variabile che conta *quante volte* succede qualcosa (`conta ← conta + 1`).
-- **Accumulatore**: variabile che somma *dei valori* (`somma ← somma + x`).
-- **Flag**: variabile Vero/Falso che ricorda *se* è successo qualcosa (`trovato ← Vero`).
-
-Contatori e accumulatori vanno sempre **inizializzati** (di solito a 0) prima di essere usati.
+Spesso esiste più di una soluzione corretta: se la tua è diversa ma supera tutti i casi prova, va bene.
 
 ---
 
@@ -45,255 +17,333 @@ Contatori e accumulatori vanno sempre **inizializzati** (di solito a 0) prima di
 
 ### S1-E1: Area di un Rettangolo
 
-Algoritmo che, dati la base e l'altezza di un rettangolo, calcola e fornisce in output l'area.
+* **Dati di input:** base, altezza
+* **Dati di output:** area
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 4, 3 | 12 |
-| 2.5, 2 | 5 |
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN base<br>IN altezza"/]
+    INPUT --> PROC["area ← base * altezza"]
+    PROC --> OUTPUT[/"OUT area"/]
+    OUTPUT --> STOP([STOP])
+```
 
 ---
 
 ### S1-E2: Area e Lunghezza della Circonferenza
 
-Algoritmo che riceve in ingresso il raggio di un cerchio e calcola sia l'area del cerchio sia la lunghezza della circonferenza.
+* **Dati di input:** raggio r
+* **Dati di output:** area del cerchio, lunghezza della circonferenza circ
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN r"/]
+    INPUT --> PROC["area ← π * r * r<br>circ ← 2 * π * r"]
+    PROC --> OUTPUT[/"OUT area<br>OUT circ"/]
+    OUTPUT --> STOP([STOP])
+```
 
-| Valori inseriti | Risultato atteso (arrotondato) |
-|---|---|
-| 1 | area 3.14 · circonferenza 6.28 |
-| 2 | area 12.57 · circonferenza 12.57 |
-
-</details>
-
-**Suggerimento:** area = π · r², circonferenza = 2 · π · r.
+**Nota:** in un flowchart il flusso non si divide mai senza un rombo: i due output sono in sequenza. Per il quadrato del raggio usa `r * r`.
 
 ---
 
 ### S1-E3: Il Maggiore tra Due Numeri
 
-Algoritmo che, dati due numeri, restituisce il valore maggiore. Se i due numeri sono uguali, l'algoritmo lo segnala con il messaggio "I numeri sono uguali".
+* **Dati di input:** due numeri x, y
+* **Dati di output:** il maggiore, oppure il messaggio "I numeri sono uguali"
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 7, 3 | 7 |
-| -2, 5 | 5 |
-| 4, 4 | I numeri sono uguali |
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> C1{"x > y"}
+    C1 -- V --> OX[/"OUT x"/]
+    C1 -- F --> C2{"x < y"}
+    C2 -- V --> OY[/"OUT y"/]
+    C2 -- F --> OEQ[/"OUT 'I numeri sono uguali'"/]
+    OX --> STOP([STOP])
+    OY --> STOP
+    OEQ --> STOP
+```
 
 ---
 
-### S1-E4: Costo Visita al Museo e Controllo Budget
+### S1-E4: Prodotto e Controllo di Soglia
 
-Una classe organizza una visita al museo. Conoscendo il numero di studenti e il prezzo del biglietto per ciascuno, l'algoritmo calcola e mostra il costo totale della visita. Se il costo supera il budget di 100 €, segnala anche un avviso di "Over Budget".
+* **Dati di input:** due numeri x, y
+* **Dati di output:** prodotto p, eventuale messaggio "Soglia superata"
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INIT["SOGLIA ← 100"]
+    INIT --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> PROC["p ← x * y"]
+    PROC --> OP[/"OUT p"/]
+    OP --> COND{"p > SOGLIA"}
+    COND -- V --> WARN[/"OUT 'Soglia superata'"/]
+    COND -- F --> STOP([STOP])
+    WARN --> STOP
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 20, 4.50 | 90 |
-| 25, 4.50 | 112.5 · Over Budget |
-| 20, 5 | 100 *(non supera il budget)* |
-
-</details>
-
-**Suggerimento:** salva il budget in una variabile (`BUDGET ← 100`) invece di scrivere 100 direttamente nella condizione. "Supera" significa `>`, non `>=`.
+**Nota:** con 20 e 5 il prodotto è esattamente 100 e il messaggio **non** compare, perché la condizione è `>`.
 
 ---
 
 ### S1-E5: Differenza o Somma con Convalida dell'Input
 
-Dati in ingresso due valori, l'algoritmo calcola e fornisce in output la loro differenza se il primo è maggiore del secondo, altrimenti la loro somma. Prima del calcolo, l'algoritmo controlla che i due valori non siano uguali: in quel caso mostra il messaggio "Errore: i valori devono essere diversi" e termina.
+* **Dati di input:** due valori x, y
+* **Dati di output:** differenza d oppure somma s, oppure messaggio di errore
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> CHK{"x == y"}
+    CHK -- V --> ERR[/"OUT 'Errore: i valori devono essere diversi'"/]
+    CHK -- F --> COND{"x > y"}
+    COND -- V --> DIFF["d ← x - y"]
+    COND -- F --> SOMMA["s ← x + y"]
+    DIFF --> OD[/"OUT d"/]
+    SOMMA --> OS[/"OUT s"/]
+    ERR --> STOP([STOP])
+    OD --> STOP
+    OS --> STOP
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 9, 4 | 5 |
-| 3, 8 | 11 |
-| 5, 5 | Errore: i valori devono essere diversi |
-
-</details>
+**Nota:** l'algoritmo termina dopo l'errore. Una freccia che torna all'input formerebbe un ciclo, che vedremo nella Sezione 2.
 
 ---
 
 ### S1-E6: Moltiplicazione o Selezione in Base al Segno
 
-Dati in ingresso due valori, se il primo è positivo l'algoritmo fornisce in output il loro prodotto; se invece il primo è negativo, manda in output direttamente il secondo valore. Se il primo valore è zero, l'algoritmo mostra il messaggio "Il primo valore è zero".
+* **Dati di input:** due valori x, y
+* **Dati di output:** prodotto m oppure y, oppure messaggio "Il primo valore è zero"
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3, 4 | 12 |
-| -2, 7 | 7 |
-| 0, 5 | Il primo valore è zero |
-
-</details>
-
-**Per riflettere:** lo zero non è né positivo né negativo. Cosa farebbe il tuo algoritmo se ti fossi dimenticato di questo caso?
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> C1{"x > 0"}
+    C1 -- V --> MULT["m ← x * y"]
+    MULT --> OM[/"OUT m"/]
+    C1 -- F --> C2{"x < 0"}
+    C2 -- V --> OY[/"OUT y"/]
+    C2 -- F --> OZ[/"OUT 'Il primo valore è zero'"/]
+    OM --> STOP([STOP])
+    OY --> STOP
+    OZ --> STOP
+```
 
 ---
 
 ### S1-E7: Pari o Dispari
 
-Dato in ingresso un numero intero positivo, l'algoritmo stabilisce se è pari o dispari. Se il numero inserito non è positivo, l'algoritmo mostra un messaggio di errore.
+* **Dati di input:** un numero intero x
+* **Dati di output:** messaggio "pari" o "dispari", oppure messaggio di errore
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 8 | pari |
-| 7 | dispari |
-| -4 | Errore: inserire un numero positivo |
-
-</details>
-
-**Suggerimento:** un numero è pari se il **resto** della divisione per 2 è 0. Nota: anche 0 è pari; qui il vincolo "positivo" serve solo per esercitare il controllo dell'input.
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> CHK{"x <= 0"}
+    CHK -- V --> ERR[/"OUT 'Errore: inserire un numero positivo'"/]
+    CHK -- F --> COND{"x % 2 == 0"}
+    COND -- V --> PARI[/"OUT 'pari'"/]
+    COND -- F --> DISPARI[/"OUT 'dispari'"/]
+    ERR --> STOP([STOP])
+    PARI --> STOP
+    DISPARI --> STOP
+```
 
 ---
 
 ### S1-E8: Somma di Valori Esclusivamente Positivi
 
-Dati in ingresso due valori qualsiasi, l'algoritmo fornisce in output la loro somma solo se entrambi sono maggiori di 0, altrimenti segnala un errore.
+* **Dati di input:** due valori x, y
+* **Dati di output:** somma s oppure messaggio "Errore"
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3, 4 | 7 |
-| 3, -1 | Errore |
-| 0, 5 | Errore *(0 non è maggiore di 0)* |
-
-</details>
-
----
-
-### S1-E9: Somma dei Valori Pari (accumulatore)
-
-Dati in ingresso due valori, l'algoritmo analizza un valore alla volta e lo aggiunge alla somma solo se è pari. Alla fine mostra la somma ottenuta.
-
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 4, 6 | 10 |
-| 4, 7 | 4 |
-| 3, 5 | 0 |
-
-</details>
-
-**Suggerimento:** usa un **accumulatore** `somma ← 0`, poi controlla un valore alla volta e, se è pari, aggiungilo.
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> COND{"x > 0 AND y > 0"}
+    COND -- V --> PROC["s ← x + y"]
+    PROC --> OS[/"OUT s"/]
+    COND -- F --> ERR[/"OUT 'Errore'"/]
+    OS --> STOP([STOP])
+    ERR --> STOP
+```
 
 ---
 
-### S1-E10: Mostrare Solo i Valori Dispari (flag)
+### S1-E9: Somma dei Valori Assoluti (accumulatore)
 
-Dati in ingresso due valori, l'algoritmo mostra in output solo quelli che risultano dispari. Se nessuno dei due è dispari, mostra il messaggio "Nessun valore dispari".
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** somma s dei valori assoluti
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> INIT["s ← 0"]
+    INIT --> CX{"x < 0"}
+    CX -- V --> NX["s ← s - x"]
+    CX -- F --> PX["s ← s + x"]
+    NX --> CY{"y < 0"}
+    PX --> CY
+    CY -- V --> NY["s ← s - y"]
+    CY -- F --> PY["s ← s + y"]
+    NY --> CZ{"z < 0"}
+    PY --> CZ
+    CZ -- V --> NZ["s ← s - z"]
+    CZ -- F --> PZ["s ← s + z"]
+    NZ --> OUTPUT[/"OUT s"/]
+    PZ --> OUTPUT
+    OUTPUT --> STOP([STOP])
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3, 8 | 3 |
-| 5, 9 | 5, 9 |
-| 2, 4 | Nessun valore dispari |
-
-</details>
-
-**Suggerimento:** usa un **flag** `trovato ← Falso` e mettilo a Vero quando mostri un valore.
+**Nota:** sottrarre un numero negativo equivale a sommare il suo opposto: se x = -3, `s - x` aggiunge 3. In alternativa si può scrivere `s ← s + (-x)`.
 
 ---
 
-### S1-E11: Contare i Valori Dispari (contatore)
+### S1-E10: Positivi, Negativi e Nulli (contatore)
 
-Dati in ingresso due valori, l'algoritmo conta quanti di essi sono dispari e mostra il risultato (0, 1 oppure 2).
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** numero di positivi pos, di negativi neg, di nulli nul
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> INIT["pos ← 0<br>neg ← 0<br>nul ← 0"]
+    INIT --> CX1{"x > 0"}
+    CX1 -- V --> PX["pos ← pos + 1"]
+    CX1 -- F --> CX2{"x < 0"}
+    CX2 -- V --> NX["neg ← neg + 1"]
+    CX2 -- F --> ZX["nul ← nul + 1"]
+    PX --> CY1{"y > 0"}
+    NX --> CY1
+    ZX --> CY1
+    CY1 -- V --> PY["pos ← pos + 1"]
+    CY1 -- F --> CY2{"y < 0"}
+    CY2 -- V --> NY["neg ← neg + 1"]
+    CY2 -- F --> ZY["nul ← nul + 1"]
+    PY --> CZ1{"z > 0"}
+    NY --> CZ1
+    ZY --> CZ1
+    CZ1 -- V --> PZ["pos ← pos + 1"]
+    CZ1 -- F --> CZ2{"z < 0"}
+    CZ2 -- V --> NZ["neg ← neg + 1"]
+    CZ2 -- F --> ZZ["nul ← nul + 1"]
+    PZ --> OUTPUT[/"OUT pos<br>OUT neg<br>OUT nul"/]
+    NZ --> OUTPUT
+    ZZ --> OUTPUT
+    OUTPUT --> STOP([STOP])
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3, 8 | 1 |
-| 5, 9 | 2 |
-| 2, 4 | 0 |
+**Nota:** per ogni numero viene incrementato **esattamente uno** dei tre contatori, perché un numero è sempre o positivo, o negativo, o nullo. Per questo la somma dei tre conteggi vale sempre 3. Confronta con S1-E9: la struttura è simile, ma qui si aggiunge sempre **1** invece del valore.
 
-</details>
+---
 
-**Per riflettere:** confronta con S1-E9. Qual è la differenza tra un contatore e un accumulatore?
+### S1-E11: Classificazione di un Triangolo
+
+* **Dati di input:** lunghezze dei tre lati a, b, c
+* **Dati di output:** tipo di triangolo (equilatero, isoscele, scaleno) oppure messaggio "Il triangolo non esiste"
+
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN a<br>IN b<br>IN c"/]
+    INPUT --> C1{"a < b + c AND b < a + c AND c < a + b"}
+    C1 -- F --> ERR[/"OUT 'Il triangolo non esiste'"/]
+    C1 -- V --> C2{"a == b AND b == c"}
+    C2 -- V --> EQ[/"OUT 'equilatero'"/]
+    C2 -- F --> C3{"a == b OR b == c OR a == c"}
+    C3 -- V --> ISO[/"OUT 'isoscele'"/]
+    C3 -- F --> SCA[/"OUT 'scaleno'"/]
+    ERR --> STOP([STOP])
+    EQ --> STOP
+    ISO --> STOP
+    SCA --> STOP
+```
+
+**Nota:** il confronto è stretto (`<`): con i lati 2, 3, 5 si ha 5 = 2 + 3 e i tre segmenti, invece di formare un triangolo, si sovrappongono su una retta. Una curiosità: se le tre disuguaglianze sono vere, i lati sono per forza tutti positivi. Sommando le ultime due, infatti, si ottiene b + c < 2a + b + c, cioè a > 0 (e lo stesso vale per b e c). Non serve quindi un controllo separato.
 
 ---
 
 ### S1-E12: Il Maggiore tra Tre Numeri
 
-Dati tre numeri in ingresso, l'algoritmo ne confronta i valori e fornisce in output il massimo.
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** il valore massimo
 
-<details>
-<summary>Caso prova</summary>
+**Soluzione A – condizioni composte**
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3, 9, 5 | 9 |
-| 8, 2, 6 | 8 |
-| 7, 7, 2 | 7 |
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> C1{"x >= y AND x >= z"}
+    C1 -- V --> OX[/"OUT x"/]
+    C1 -- F --> C2{"y >= z"}
+    C2 -- V --> OY[/"OUT y"/]
+    C2 -- F --> OZ[/"OUT z"/]
+    OX --> STOP([STOP])
+    OY --> STOP
+    OZ --> STOP
+```
 
-</details>
+**Soluzione B – selezioni annidate**
 
-**Sfida:** risolvi l'esercizio in due modi: con selezioni annidate e con condizioni composte (`and`). Quale flowchart è più leggibile?
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> C1{"x >= y"}
+    C1 -- V --> C2{"x >= z"}
+    C1 -- F --> C3{"y >= z"}
+    C2 -- V --> OX[/"OUT x"/]
+    C2 -- F --> OZ1[/"OUT z"/]
+    C3 -- V --> OY[/"OUT y"/]
+    C3 -- F --> OZ2[/"OUT z"/]
+    OX --> STOP([STOP])
+    OZ1 --> STOP
+    OY --> STOP
+    OZ2 --> STOP
+```
+
+**Nota:** si usa `>=` e non `>`. Con `>` e l'input 7, 7, 2 nessuna condizione sarebbe vera e l'algoritmo non mostrerebbe nulla. Nella Soluzione A, se x non è il massimo, il massimo è per forza y oppure z: basta confrontare loro due.
 
 ---
 
 ### S1-E13: Somma dei Numeri Pari e Positivi
 
-Dati tre numeri, l'algoritmo verifica per ciascuno se è **contemporaneamente** maggiore di zero e pari; i numeri che rispettano entrambe le condizioni vengono sommati e alla fine viene mostrata la somma.
+* **Dati di input:** tre numeri x, y, z
+* **Dati di output:** somma s dei numeri pari e maggiori di zero
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 4, -2, 6 | 10 |
-| 3, 5, 7 | 0 |
-| -4, 2, 8 | 10 |
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y<br>IN z"/]
+    INPUT --> INIT["s ← 0"]
+    INIT --> CX{"x > 0 AND x % 2 == 0"}
+    CX -- V --> AX["s ← s + x"]
+    CX -- F --> CY{"y > 0 AND y % 2 == 0"}
+    AX --> CY
+    CY -- V --> AY["s ← s + y"]
+    CY -- F --> CZ{"z > 0 AND z % 2 == 0"}
+    AY --> CZ
+    CZ -- V --> AZ["s ← s + z"]
+    CZ -- F --> OUTPUT[/"OUT s"/]
+    AZ --> OUTPUT
+    OUTPUT --> STOP([STOP])
+```
 
 ---
 
 ### S1-E14: Decine e Unità
 
-Dato un numero intero di due cifre (da 10 a 99), l'algoritmo ricava e mostra la cifra delle decine, la cifra delle unità e la loro somma. Se il numero inserito non ha due cifre, mostra un messaggio di errore.
+* **Dati di input:** un numero intero n
+* **Dati di output:** cifra delle decine d, cifra delle unità u, somma s, oppure messaggio "Errore"
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 47 | 4, 7, 11 |
-| 90 | 9, 0, 9 |
-| 105 | Errore |
-
-</details>
-
-**Suggerimento:** decine = divisione intera per 10; unità = resto della divisione per 10.
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN n"/]
+    INPUT --> CHK{"n < 10 OR n > 99"}
+    CHK -- V --> ERR[/"OUT 'Errore'"/]
+    CHK -- F --> PROC["d ← n // 10<br>u ← n % 10<br>s ← d + u"]
+    PROC --> OUTPUT[/"OUT d<br>OUT u<br>OUT s"/]
+    ERR --> STOP([STOP])
+    OUTPUT --> STOP
+```
 
 ---
 
@@ -303,196 +353,266 @@ Dato un numero intero di due cifre (da 10 a 99), l'algoritmo ricava e mostra la 
 
 ### S2-E1: Numeri da 0 a 3
 
-Usando un ciclo con una variabile contatore, l'algoritmo mostra in sequenza i numeri da 0 a 3.
+* **Dati di input:** nessuno
+* **Dati di output:** i numeri da 0 a 3
 
-<details>
-<summary>Caso prova</summary>
-
-**Risultato atteso:** 0, 1, 2, 3
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0"]
+    INIT --> COND{"i <= 3"}
+    COND -- V --> OUTPUT[/"OUT i"/]
+    OUTPUT --> INC["i ← i + 1"]
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
 
 ---
 
 ### S2-E2: Numeri Pari da 0 a 5
 
-L'algoritmo esegue un ciclo da 0 a 5 e mostra in output solo i numeri pari incontrati.
+* **Dati di input:** nessuno
+* **Dati di output:** i numeri pari da 0 a 5
 
-<details>
-<summary>Caso prova</summary>
+**Soluzione A – passo 1 con controllo**
 
-**Risultato atteso:** 0, 2, 4
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0"]
+    INIT --> COND{"i <= 5"}
+    COND -- V --> CHK{"i % 2 == 0"}
+    CHK -- V --> OUTPUT[/"OUT i"/]
+    CHK -- F --> INC["i ← i + 1"]
+    OUTPUT --> INC
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
 
-</details>
+**Soluzione B – passo 2, senza controllo**
 
-**Sfida:** risolvilo in due modi: (1) ciclo di passo 1 con controllo del resto; (2) ciclo di passo 2, senza controllo. Quale fa meno operazioni?
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0"]
+    INIT --> COND{"i <= 5"}
+    COND -- V --> OUTPUT[/"OUT i"/]
+    OUTPUT --> INC["i ← i + 2"]
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
+
+**Nota:** la Soluzione A esegue 6 iterazioni e 6 controlli, la B solo 3 iterazioni. Il risultato è lo stesso.
 
 ---
 
 ### S2-E3: Somma dei Numeri da 0 a 10
 
-L'algoritmo esegue un ciclo per calcolare e mostrare la somma di tutti i numeri interi da 0 a 10.
+* **Dati di input:** nessuno
+* **Dati di output:** somma s
 
-<details>
-<summary>Caso prova</summary>
-
-**Risultato atteso:** 55
-
-</details>
-
-**Per riflettere:** la formula di Gauss n·(n+1)/2 dà lo stesso risultato. Usala per verificare il tuo algoritmo.
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 0<br>s ← 0"]
+    INIT --> COND{"i <= 10"}
+    COND -- V --> PROC["s ← s + i"]
+    PROC --> INC["i ← i + 1"]
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT s"/]
+    OUTPUT --> STOP([STOP])
+```
 
 ---
 
 ### S2-E4: Somma dei Numeri Dispari da 5 a 15
 
-L'algoritmo esegue un ciclo da 5 a 15, controlla per ogni numero se è dispari e, in quel caso, lo aggiunge alla somma. Alla fine mostra la somma ottenuta.
+* **Dati di input:** nessuno
+* **Dati di output:** somma sd dei numeri dispari
 
-<details>
-<summary>Caso prova</summary>
-
-**Risultato atteso:** 60 *(5 + 7 + 9 + 11 + 13 + 15)*
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 5<br>sd ← 0"]
+    INIT --> COND{"i <= 15"}
+    COND -- V --> CHK{"i % 2 != 0"}
+    CHK -- V --> PROC["sd ← sd + i"]
+    CHK -- F --> INC["i ← i + 1"]
+    PROC --> INC
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT sd"/]
+    OUTPUT --> STOP([STOP])
+```
 
 ---
 
 ### S2-E5: Quanti Multipli di 3?
 
-L'algoritmo conta quanti numeri da 1 a 30 sono multipli di 3 e mostra il risultato.
+* **Dati di input:** nessuno
+* **Dati di output:** numero conta di multipli di 3
 
-<details>
-<summary>Caso prova</summary>
-
-**Risultato atteso:** 10
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INIT["i ← 1<br>conta ← 0"]
+    INIT --> COND{"i <= 30"}
+    COND -- V --> CHK{"i % 3 == 0"}
+    CHK -- V --> PROC["conta ← conta + 1"]
+    CHK -- F --> INC["i ← i + 1"]
+    PROC --> INC
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT conta"/]
+    OUTPUT --> STOP([STOP])
+```
 
 ---
 
 ### S2-E6: Il Massimo tra N Numeri
 
-L'utente indica quanti numeri vuole inserire, poi li inserisce uno alla volta. Al termine, l'algoritmo mostra il più grande tra i numeri inseriti.
+* **Dati di input:** quantità di numeri N, poi N numeri x
+* **Dati di output:** il valore massimo max
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INN[/"IN N"/]
+    INN --> IN1[/"IN x"/]
+    IN1 --> INIT["max ← x<br>i ← 2"]
+    INIT --> COND{"i <= N"}
+    COND -- V --> INX[/"IN x"/]
+    INX --> CHK{"x > max"}
+    CHK -- V --> UPD["max ← x"]
+    CHK -- F --> INC["i ← i + 1"]
+    UPD --> INC
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT max"/]
+    OUTPUT --> STOP([STOP])
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 4 numeri: 3, 9, 2, 5 | 9 |
-| 3 numeri: -7, -2, -5 | -2 |
-
-</details>
-
-**Suggerimento:** non inizializzare il massimo a 0: con il secondo caso prova otterresti un risultato sbagliato. Usa il **primo numero inserito** come massimo iniziale.
+**Nota:** il primo numero viene letto **prima** del ciclo e diventa il massimo iniziale, quindi il contatore parte da 2. Il testo garantisce che N ≥ 1: senza questa condizione l'algoritmo leggerebbe un numero anche con N = 0.
 
 ---
 
 ### Parte B – Cicli indefiniti
 
-Un ciclo indefinito si ripete **finché una condizione è vera**: non si sa in anticipo quante volte verrà eseguito. È lo strumento giusto per controllare l'input dell'utente.
-
 ### S2-E7: Somma da 0 a x con Validazione
 
-Dato un numero intero positivo inserito dall'utente, l'algoritmo calcola e mostra la somma di tutti i numeri da 0 a quel numero. Se il numero inserito non è positivo, l'algoritmo lo richiede finché l'utente non ne inserisce uno valido.
+* **Dati di input:** un numero x (da validare)
+* **Dati di output:** somma s
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> CHK{"x <= 0"}
+    CHK -- V --> ERR[/"OUT 'Inserisci un numero positivo'"/]
+    ERR --> INPUT
+    CHK -- F --> INIT["i ← 0<br>s ← 0"]
+    INIT --> COND{"i <= x"}
+    COND -- V --> PROC["s ← s + i"]
+    PROC --> INC["i ← i + 1"]
+    INC --> COND
+    COND -- F --> OUTPUT[/"OUT s"/]
+    OUTPUT --> STOP([STOP])
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 4 | 10 |
-| -3, poi 0, poi 4 | (richiesta ripetuta due volte) 10 |
-
-</details>
+**Nota:** la freccia che da `ERR` torna all'input forma il ciclo di validazione: si ripete **finché** x non è positivo.
 
 ---
 
 ### S2-E8: C'è un Numero Negativo?
 
-L'utente indica quanti numeri vuole inserire, poi li inserisce uno alla volta. Al termine, l'algoritmo mostra "Presente almeno un negativo" se tra i numeri inseriti ce n'è almeno uno negativo, altrimenti "Nessun negativo".
+* **Dati di input:** quantità di numeri N, poi N numeri x
+* **Dati di output:** messaggio "Presente almeno un negativo" o "Nessun negativo"
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INN[/"IN N"/]
+    INN --> INIT["neg ← Falso<br>i ← 1"]
+    INIT --> COND{"i <= N"}
+    COND -- V --> INX[/"IN x"/]
+    INX --> CHK{"x < 0"}
+    CHK -- V --> FLAG["neg ← Vero"]
+    CHK -- F --> INC["i ← i + 1"]
+    FLAG --> INC
+    INC --> COND
+    COND -- F --> CF{"neg"}
+    CF -- V --> OP[/"OUT 'Presente almeno un negativo'"/]
+    CF -- F --> ON[/"OUT 'Nessun negativo'"/]
+    OP --> STOP([STOP])
+    ON --> STOP
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 4 numeri: 3, -1, 5, 2 | Presente almeno un negativo |
-| 3 numeri: 4, 0, 7 | Nessun negativo |
-
-</details>
-
-**Suggerimento:** usa un **flag**. Attenzione: una volta messo a Vero, non deve tornare Falso.
+**Nota:** il flag viene messo a Vero, ma non viene mai rimesso a Falso dentro il ciclo, altrimenti un numero positivo successivo "cancellerebbe" il negativo trovato.
 
 ---
 
 ## SEZIONE 3 – Ripasso: i Quattro Schemi Fondamentali
 
-Questi quattro esercizi riassumono le strutture viste. Sono utili anche come **esempi modello** prima di affrontare le sezioni precedenti.
-
 ### S3-E1: Sequenza
 
-Algoritmo in sequenza che riceve due valori in ingresso, ne calcola la somma e il prodotto e mostra entrambi i risultati.
+* **Dati di input:** due valori x, y
+* **Dati di output:** somma s, prodotto m
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3, 4 | somma 7 · prodotto 12 |
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x<br>IN y"/]
+    INPUT --> PROC["s ← x + y<br>m ← x * y"]
+    PROC --> OUTPUT[/"OUT s<br>OUT m"/]
+    OUTPUT --> STOP([STOP])
+```
 
 ---
 
 ### S3-E2: Selezione
 
-Algoritmo che, data l'età di una persona, stabilisce e comunica se è maggiorenne o minorenne.
+* **Dati di input:** un numero x
+* **Dati di output:** messaggio "Appartiene" o "Non appartiene"
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> COND{"x >= 0 AND x < 18"}
+    COND -- V --> OA[/"OUT 'Appartiene'"/]
+    COND -- F --> ON[/"OUT 'Non appartiene'"/]
+    OA --> STOP([STOP])
+    ON --> STOP
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 18 | Maggiorenne |
-| 15 | Minorenne |
-
-</details>
-
-**Per riflettere:** la condizione è `età >= 18` oppure `età > 18`? Prova con 18.
+**Nota:** la parentesi quadra indica che l'estremo è incluso (`>=`), quella tonda che è escluso (`<`).
 
 ---
 
 ### S3-E3: Ciclo Definito (Tabellina)
 
-Dato un numero inserito dall'utente, l'algoritmo mostra la sua tabellina, moltiplicandolo per un contatore che va da 0 a 10.
+* **Dati di input:** un numero x
+* **Dati di output:** i valori t della tabellina
 
-<details>
-<summary>Caso prova</summary>
-
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 3 | 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30 |
-
-</details>
+```mermaid
+graph TD
+    START([START]) --> INPUT[/"IN x"/]
+    INPUT --> INIT["i ← 0"]
+    INIT --> COND{"i <= 10"}
+    COND -- V --> PROC["t ← x * i"]
+    PROC --> OUTPUT[/"OUT t"/]
+    OUTPUT --> INC["i ← i + 1"]
+    INC --> COND
+    COND -- F --> STOP([STOP])
+```
 
 ---
 
 ### S3-E4: Ciclo Indefinito (Somma a Oltranza)
 
-L'utente inserisce numeri uno alla volta e l'algoritmo li somma, continuando finché la somma diventa **maggiore di 100**. Alla fine mostra la somma ottenuta e quanti numeri sono stati inseriti.
+* **Dati di input:** una serie di valori x, di lunghezza non nota
+* **Dati di output:** somma s, numero conta di valori inseriti
 
-<details>
-<summary>Caso prova</summary>
+```mermaid
+graph TD
+    START([START]) --> INIT["s ← 0<br>conta ← 0"]
+    INIT --> INPUT[/"IN x"/]
+    INPUT --> PROC["s ← s + x<br>conta ← conta + 1"]
+    PROC --> COND{"s <= 100"}
+    COND -- V --> INPUT
+    COND -- F --> OUTPUT[/"OUT s<br>OUT conta"/]
+    OUTPUT --> STOP([STOP])
+```
 
-| Valori inseriti | Risultato atteso |
-|---|---|
-| 40, 50, 30 | somma 120 · numeri inseriti 3 |
-| 60, 40, 1 | somma 101 · numeri inseriti 3 *(con 100 il ciclo continua)* |
+**Nota:** qui il controllo è **dopo** il corpo del ciclo, quindi almeno un numero viene sempre letto.
 
-</details>
-
-**Per riflettere:** cosa succede se l'utente inserisce numeri negativi? Il ciclo potrebbe non terminare mai? Proponi una modifica per evitarlo.
+**Per riflettere:** se l'utente inserisce solo numeri negativi, `s` non supererà mai 100 e il ciclo non terminerà. Una possibile modifica: accettare solo valori positivi, con un ciclo di validazione come in S2-E7.
 
 ---
 
