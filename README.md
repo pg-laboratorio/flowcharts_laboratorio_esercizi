@@ -57,7 +57,7 @@ Algoritmo che, dati la base e l'altezza di un rettangolo, calcola e fornisce in 
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e1-area-di-un-rettangolo)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e1-area-di-un-rettangolo)
 
 ---
 
@@ -77,7 +77,7 @@ Algoritmo che riceve in ingresso il raggio di un cerchio e calcola sia l'area de
 
 **Suggerimento:** area = π · r², circonferenza = 2 · π · r.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e2-area-e-lunghezza-della-circonferenza)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e2-area-e-lunghezza-della-circonferenza)
 
 ---
 
@@ -96,7 +96,7 @@ Algoritmo che, dati due numeri, restituisce il valore maggiore. Se i due numeri 
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e3-il-maggiore-tra-due-numeri)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e3-il-maggiore-tra-due-numeri)
 
 ---
 
@@ -117,7 +117,7 @@ Dati due numeri, l'algoritmo calcola e mostra il loro prodotto. Se il prodotto s
 
 **Suggerimento:** salva la soglia in una variabile (`SOGLIA ← 100`) invece di scrivere 100 direttamente nella condizione. "Supera" significa `>`, non `>=`.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e4-prodotto-e-controllo-di-soglia)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e4-prodotto-e-controllo-di-soglia)
 
 ---
 
@@ -136,7 +136,7 @@ Dati in ingresso due valori, l'algoritmo calcola e fornisce in output la loro di
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e5-differenza-o-somma-con-convalida-dellinput)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e5-differenza-o-somma-con-convalida-dellinput)
 
 ---
 
@@ -157,7 +157,7 @@ Dati in ingresso due valori, se il primo è positivo l'algoritmo fornisce in out
 
 **Per riflettere:** lo zero non è né positivo né negativo. Cosa farebbe il tuo algoritmo se ti fossi dimenticato di questo caso?
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e6-moltiplicazione-o-selezione-in-base-al-segno)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e6-moltiplicazione-o-selezione-in-base-al-segno)
 
 ---
 
@@ -178,7 +178,7 @@ Dato in ingresso un numero intero positivo, l'algoritmo stabilisce se è pari o 
 
 **Suggerimento:** un numero è pari se il **resto** della divisione per 2 è 0. Nota: anche 0 è pari; qui il vincolo "positivo" serve solo per esercitare il controllo dell'input.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e7-pari-o-dispari)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e7-pari-o-dispari)
 
 ---
 
@@ -197,7 +197,7 @@ Dati in ingresso due valori qualsiasi, l'algoritmo fornisce in output la loro so
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e8-somma-di-valori-esclusivamente-positivi)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e8-somma-di-valori-esclusivamente-positivi)
 
 ---
 
@@ -218,7 +218,7 @@ Dati due numeri, l'algoritmo calcola e mostra la somma dei loro valori assoluti.
 
 **Suggerimento:** usa un **accumulatore** `s ← 0`. Per ogni numero, la selezione non decide *se* sommarlo, ma *cosa* sommare: il numero oppure il suo opposto.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e9-somma-dei-valori-assoluti-accumulatore)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e9-somma-dei-valori-assoluti-accumulatore)
 
 ---
 
@@ -240,7 +240,7 @@ Dati due numeri, l'algoritmo conta quanti sono positivi, quanti negativi e quant
 
 **Per riflettere:** la somma dei tre conteggi vale sempre 2. Perché? Puoi usare questo fatto per controllare la tua soluzione. Confronta poi con S1-E9: qual è la differenza tra un contatore e un accumulatore?
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e10-positivi-negativi-e-nulli-contatore)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e10-positivi-negativi-e-nulli-contatore)
 
 ---
 
@@ -264,7 +264,7 @@ Date le lunghezze dei tre lati, l'algoritmo verifica innanzitutto che il triango
 
 **Suggerimento:** se controlli prima il caso equilatero, per riconoscere un isoscele basta verificare che **almeno due** lati siano uguali.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e11-classificazione-di-un-triangolo)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e11-classificazione-di-un-triangolo)
 
 ---
 
@@ -285,7 +285,7 @@ Dati tre numeri in ingresso, l'algoritmo ne confronta i valori e fornisce in out
 
 **Sfida:** risolvi l'esercizio in due modi: con selezioni annidate e con condizioni composte (`and`). Quale flowchart è più leggibile?
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e12-il-maggiore-tra-tre-numeri)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e12-il-maggiore-tra-tre-numeri)
 
 ---
 
@@ -305,7 +305,7 @@ Dati due numeri, l'algoritmo verifica per ciascuno se è **contemporaneamente** 
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e13-somma-dei-numeri-pari-e-positivi)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e13-somma-dei-numeri-pari-e-positivi)
 
 ---
 
@@ -326,7 +326,7 @@ Dato un numero intero di due cifre (da 10 a 99), l'algoritmo ricava e mostra la 
 
 **Suggerimento:** decine = divisione intera per 10; unità = resto della divisione per 10.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s1-e14-decine-e-unità)
+[Vai alla soluzione](flowcharts_soluzioni.md#s1-e14-decine-e-unità)
 
 ---
 
@@ -345,7 +345,7 @@ Usando un ciclo con una variabile contatore, l'algoritmo mostra in sequenza i nu
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e1-numeri-da-0-a-3)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e1-numeri-da-0-a-3)
 
 ---
 
@@ -362,7 +362,7 @@ L'algoritmo esegue un ciclo da 0 a 5 e mostra in output solo i numeri pari incon
 
 **Sfida:** risolvilo in due modi: (1) ciclo di passo 1 con controllo del resto; (2) ciclo di passo 2, senza controllo. Quale fa meno operazioni?
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e2-numeri-pari-da-0-a-5)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e2-numeri-pari-da-0-a-5)
 
 ---
 
@@ -379,7 +379,7 @@ L'algoritmo esegue un ciclo per calcolare e mostrare la somma di tutti i numeri 
 
 **Per riflettere:** la formula di Gauss n·(n+1)/2 dà lo stesso risultato. Usala per verificare il tuo algoritmo.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e3-somma-dei-numeri-da-0-a-10)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e3-somma-dei-numeri-da-0-a-10)
 
 ---
 
@@ -394,7 +394,7 @@ L'algoritmo esegue un ciclo da 5 a 15, controlla per ogni numero se è dispari e
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e4-somma-dei-numeri-dispari-da-5-a-15)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e4-somma-dei-numeri-dispari-da-5-a-15)
 
 ---
 
@@ -409,7 +409,7 @@ L'algoritmo conta quanti numeri da 1 a 30 sono multipli di 3 e mostra il risulta
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e5-quanti-multipli-di-3)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e5-quanti-multipli-di-3)
 
 ---
 
@@ -429,7 +429,7 @@ L'utente indica quanti numeri vuole inserire (almeno uno), poi li inserisce uno 
 
 **Suggerimento:** non inizializzare il massimo a 0: con il secondo caso prova otterresti un risultato sbagliato. Usa il **primo numero inserito** come massimo iniziale.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e6-il-massimo-tra-n-numeri)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e6-il-massimo-tra-n-numeri)
 
 ---
 
@@ -451,7 +451,7 @@ Dato un numero intero positivo inserito dall'utente, l'algoritmo calcola e mostr
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e7-somma-da-0-a-x-con-validazione)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e7-somma-da-0-a-x-con-validazione)
 
 ---
 
@@ -471,7 +471,7 @@ L'utente indica quanti numeri vuole inserire, poi li inserisce uno alla volta. A
 
 **Suggerimento:** usa un **flag** (vedi "Tre parole da conoscere" all'inizio della raccolta). Attenzione: una volta messo a Vero, non deve tornare Falso.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s2-e8-cè-un-numero-negativo)
+[Vai alla soluzione](flowcharts_soluzioni.md#s2-e8-cè-un-numero-negativo)
 
 ---
 
@@ -492,7 +492,7 @@ Algoritmo in sequenza che riceve due valori in ingresso, ne calcola la somma e i
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s3-e1-sequenza)
+[Vai alla soluzione](flowcharts_soluzioni.md#s3-e1-sequenza)
 
 ---
 
@@ -514,7 +514,7 @@ Dato un numero, l'algoritmo stabilisce se appartiene all'intervallo [0, 18), cio
 
 **Per riflettere:** cosa indicano la parentesi quadra e quella tonda? Prova con 0 e con 18.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s3-e2-selezione)
+[Vai alla soluzione](flowcharts_soluzioni.md#s3-e2-selezione)
 
 ---
 
@@ -531,7 +531,7 @@ Dato un numero inserito dall'utente, l'algoritmo mostra la sua tabellina, moltip
 
 </details>
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s3-e3-ciclo-definito-tabellina)
+[Vai alla soluzione](flowcharts_soluzioni.md#s3-e3-ciclo-definito-tabellina)
 
 ---
 
@@ -551,7 +551,7 @@ L'utente inserisce numeri uno alla volta e l'algoritmo li somma, continuando fin
 
 **Per riflettere:** cosa succede se l'utente inserisce numeri negativi? Il ciclo potrebbe non terminare mai? Proponi una modifica per evitarlo.
 
-➡️ [Vai alla soluzione](flowcharts_soluzioni.md#s3-e4-ciclo-indefinito-somma-a-oltranza)
+[Vai alla soluzione](flowcharts_soluzioni.md#s3-e4-ciclo-indefinito-somma-a-oltranza)
 
 ---
 
