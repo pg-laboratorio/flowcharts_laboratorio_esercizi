@@ -28,6 +28,8 @@ graph TD
     OUTPUT --> STOP([STOP])
 ```
 
+[Torna all'esercizio](README.md#s1-e1-area-di-un-rettangolo)
+
 ---
 
 ### S1-E2: Area e Lunghezza della Circonferenza
@@ -44,6 +46,8 @@ graph TD
 ```
 
 **Nota:** in un flowchart il flusso non si divide mai senza un rombo: i due output sono in sequenza. Per il quadrato del raggio usa `r * r`.
+
+[Torna all'esercizio](README.md#s1-e2-area-e-lunghezza-della-circonferenza)
 
 ---
 
@@ -65,6 +69,8 @@ graph TD
     OEQ --> STOP
 ```
 
+[Torna all'esercizio](README.md#s1-e3-il-maggiore-tra-due-numeri)
+
 ---
 
 ### S1-E4: Prodotto e Controllo di Soglia
@@ -85,6 +91,8 @@ graph TD
 ```
 
 **Nota:** con 20 e 5 il prodotto è esattamente 100 e il messaggio **non** compare, perché la condizione è `>`.
+
+[Torna all'esercizio](README.md#s1-e4-prodotto-e-controllo-di-soglia)
 
 ---
 
@@ -110,6 +118,8 @@ graph TD
 
 **Nota:** l'algoritmo termina dopo l'errore. Una freccia che torna all'input formerebbe un ciclo, che vedremo nella Sezione 2.
 
+[Torna all'esercizio](README.md#s1-e5-differenza-o-somma-con-convalida-dellinput)
+
 ---
 
 ### S1-E6: Moltiplicazione o Selezione in Base al Segno
@@ -131,6 +141,8 @@ graph TD
     OZ --> STOP
 ```
 
+[Torna all'esercizio](README.md#s1-e6-moltiplicazione-o-selezione-in-base-al-segno)
+
 ---
 
 ### S1-E7: Pari o Dispari
@@ -151,6 +163,8 @@ graph TD
     DISPARI --> STOP
 ```
 
+[Torna all'esercizio](README.md#s1-e7-pari-o-dispari)
+
 ---
 
 ### S1-E8: Somma di Valori Esclusivamente Positivi
@@ -168,6 +182,8 @@ graph TD
     OS --> STOP([STOP])
     ERR --> STOP
 ```
+
+[Torna all'esercizio](README.md#s1-e8-somma-di-valori-esclusivamente-positivi)
 
 ---
 
@@ -193,6 +209,8 @@ graph TD
 ```
 
 **Nota:** sottrarre un numero negativo equivale a sommare il suo opposto: se x = -3, `s - x` aggiunge 3. In alternativa si può scrivere `s ← s + (-x)`.
+
+[Torna all'esercizio](README.md#s1-e9-somma-dei-valori-assoluti-accumulatore)
 
 ---
 
@@ -225,6 +243,8 @@ graph TD
 
 **Nota:** per ogni numero viene incrementato **esattamente uno** dei tre contatori, perché un numero è sempre o positivo, o negativo, o nullo. Per questo la somma dei tre conteggi vale sempre 2. Confronta con S1-E9: la struttura è simile, ma qui si aggiunge sempre **1** invece del valore.
 
+[Torna all'esercizio](README.md#s1-e10-positivi-negativi-e-nulli-contatore)
+
 ---
 
 ### S1-E11: Classificazione di un Triangolo
@@ -249,6 +269,8 @@ graph TD
 ```
 
 **Nota:** il confronto è stretto (`<`): con i lati 2, 3, 5 si ha 5 = 2 + 3 e i tre segmenti, invece di formare un triangolo, si sovrappongono su una retta. Una curiosità: se le tre disuguaglianze sono vere, i lati sono per forza tutti positivi. Sommando le ultime due, infatti, si ottiene b + c < 2a + b + c, cioè a > 0 (e lo stesso vale per b e c). Non serve quindi un controllo separato.
+
+[Torna all'esercizio](README.md#s1-e11-classificazione-di-un-triangolo)
 
 ---
 
@@ -292,6 +314,8 @@ graph TD
 
 **Nota:** si usa `>=` e non `>`. Con `>` e l'input 7, 7, 2 nessuna condizione sarebbe vera e l'algoritmo non mostrerebbe nulla. Nella Soluzione A, se x non è il massimo, il massimo è per forza y oppure z: basta confrontare loro due.
 
+[Torna all'esercizio](README.md#s1-e12-il-maggiore-tra-tre-numeri)
+
 ---
 
 ### S1-E13: Somma dei Numeri Pari e Positivi
@@ -313,6 +337,8 @@ graph TD
     OUTPUT --> STOP([STOP])
 ```
 
+[Torna all'esercizio](README.md#s1-e13-somma-dei-numeri-pari-e-positivi)
+
 ---
 
 ### S1-E14: Decine e Unità
@@ -330,6 +356,8 @@ graph TD
     ERR --> STOP([STOP])
     OUTPUT --> STOP
 ```
+
+[Torna all'esercizio](README.md#s1-e14-decine-e-unità)
 
 ---
 
@@ -351,6 +379,8 @@ graph TD
     INC --> COND
     COND -- F --> STOP([STOP])
 ```
+
+[Torna all'esercizio](README.md#s2-e1-numeri-da-0-a-3)
 
 ---
 
@@ -387,6 +417,8 @@ graph TD
 
 **Nota:** la Soluzione A esegue 6 iterazioni e 6 controlli, la B solo 3 iterazioni. Il risultato è lo stesso.
 
+[Torna all'esercizio](README.md#s2-e2-numeri-pari-da-0-a-5)
+
 ---
 
 ### S2-E3: Somma dei Numeri da 0 a 10
@@ -404,6 +436,8 @@ graph TD
     COND -- F --> OUTPUT[/"OUT s"/]
     OUTPUT --> STOP([STOP])
 ```
+
+[Torna all'esercizio](README.md#s2-e3-somma-dei-numeri-da-0-a-10)
 
 ---
 
@@ -425,6 +459,8 @@ graph TD
     OUTPUT --> STOP([STOP])
 ```
 
+[Torna all'esercizio](README.md#s2-e4-somma-dei-numeri-dispari-da-5-a-15)
+
 ---
 
 ### S2-E5: Quanti Multipli di 3?
@@ -444,6 +480,8 @@ graph TD
     COND -- F --> OUTPUT[/"OUT conta"/]
     OUTPUT --> STOP([STOP])
 ```
+
+[Torna all'esercizio](README.md#s2-e5-quanti-multipli-di-3)
 
 ---
 
@@ -470,6 +508,8 @@ graph TD
 
 **Nota:** il primo numero viene letto **prima** del ciclo e diventa il massimo iniziale, quindi il contatore parte da 2. Il testo garantisce che N ≥ 1: senza questa condizione l'algoritmo leggerebbe un numero anche con N = 0.
 
+[Torna all'esercizio](README.md#s2-e6-il-massimo-tra-n-numeri)
+
 ---
 
 ### Parte B – Cicli indefiniti
@@ -495,6 +535,8 @@ graph TD
 ```
 
 **Nota:** la freccia che da `ERR` torna all'input forma il ciclo di validazione: si ripete **finché** x non è positivo.
+
+[Torna all'esercizio](README.md#s2-e7-somma-da-0-a-x-con-validazione)
 
 ---
 
@@ -523,6 +565,8 @@ graph TD
 
 **Nota:** il flag viene messo a Vero, ma non viene mai rimesso a Falso dentro il ciclo, altrimenti un numero positivo successivo "cancellerebbe" il negativo trovato.
 
+[Torna all'esercizio](README.md#s2-e8-cè-un-numero-negativo)
+
 ---
 
 ## SEZIONE 3 – Ripasso: i Quattro Schemi Fondamentali
@@ -539,6 +583,8 @@ graph TD
     PROC --> OUTPUT[/"OUT s<br>OUT m"/]
     OUTPUT --> STOP([STOP])
 ```
+
+[Torna all'esercizio](README.md#s3-e1-sequenza)
 
 ---
 
@@ -559,6 +605,8 @@ graph TD
 
 **Nota:** la parentesi quadra indica che l'estremo è incluso (`>=`), quella tonda che è escluso (`<`).
 
+[Torna all'esercizio](README.md#s3-e2-selezione)
+
 ---
 
 ### S3-E3: Ciclo Definito (Tabellina)
@@ -577,6 +625,8 @@ graph TD
     INC --> COND
     COND -- F --> STOP([STOP])
 ```
+
+[Torna all'esercizio](README.md#s3-e3-ciclo-definito-tabellina)
 
 ---
 
@@ -599,6 +649,8 @@ graph TD
 **Nota:** qui il controllo è **dopo** il corpo del ciclo, quindi almeno un numero viene sempre letto.
 
 **Per riflettere:** se l'utente inserisce solo numeri negativi, `s` non supererà mai 100 e il ciclo non terminerà. Una possibile modifica: accettare solo valori positivi, con un ciclo di validazione come in S2-E7.
+
+[Torna all'esercizio](README.md#s3-e4-ciclo-indefinito-somma-a-oltranza)
 
 ---
 
