@@ -25,17 +25,29 @@ In tutta la raccolta, "da *a* a *b*" significa **estremi inclusi**. Esempio: "da
 |---|---|---|
 | Inizio / Fine | Ovale | Primo e ultimo blocco dell'algoritmo |
 | Input / Output | Parallelogramma | Leggere un dato, mostrare un risultato |
-| Elaborazione | Rettangolo | Calcoli e assegnazioni (`area ← base * altezza`) |
+| Elaborazione | Rettangolo | Calcoli e assegnazioni (`area = base * altezza`) |
 | Decisione | Rombo | Condizione con due uscite: Vero / Falso |
 | Flusso | Freccia | Ordine di esecuzione |
 
-Strumenti consigliati: [diagrams.net](https://app.diagrams.net) (da browser) oppure [Flowgorithm](http://www.flowgorithm.org) (permette anche di eseguire il flowchart passo per passo).
+### Operatori
+
+| Operatore | Significato | Esempio |
+|---|---|---|
+| `=` | Assegnazione: dà un valore a una variabile | `i = 0` (ora i vale 0) |
+| `==` | Sono uguali? (solo nei rombi) | `x == 0` |
+| `!=` | Sono diversi? (solo nei rombi) | `x != 0` |
+| `>` `<` `>=` `<=` | Maggiore, minore, maggiore o uguale, minore o uguale | `x >= 18` |
+| `%` | Resto della divisione | `x % 2 == 0` (x è pari) |
+| `//` | Divisione intera | `47 // 10` vale 4 |
+| `AND` `OR` `NOT` | E, O, NON | `x > 0 AND y > 0` |
+
+Strumento consigliato: [diagrams.net](https://app.diagrams.net) (da browser).
 
 ### Tre parole da conoscere
 
-- **Contatore**: variabile che conta *quante volte* succede qualcosa (`conta ← conta + 1`).
-- **Accumulatore**: variabile che somma *dei valori* (`somma ← somma + x`).
-- **Flag**: variabile Vero/Falso che ricorda *se* è successo qualcosa (`trovato ← Vero`).
+- **Contatore**: variabile che conta *quante volte* succede qualcosa (`conta = conta + 1`).
+- **Accumulatore**: variabile che somma *dei valori* (`somma = somma + x`).
+- **Flag**: variabile Vero/Falso che ricorda *se* è successo qualcosa (`trovato = Vero`).
 
 Contatori e accumulatori vanno sempre **inizializzati** (di solito a 0) prima di essere usati.
 
@@ -115,7 +127,7 @@ Dati due numeri, l'algoritmo calcola e mostra il loro prodotto. Se il prodotto s
 
 </details>
 
-**Suggerimento:** salva la soglia in una variabile (`SOGLIA ← 100`) invece di scrivere 100 direttamente nella condizione. "Supera" significa `>`, non `>=`.
+**Suggerimento:** salva la soglia in una variabile (`SOGLIA = 100`) invece di scrivere 100 direttamente nella condizione. "Supera" significa `>`, non `>=`.
 
 [Vai alla soluzione](flowcharts_soluzioni.md#s1-e4-prodotto-e-controllo-di-soglia)
 
@@ -216,7 +228,7 @@ Dati due numeri, l'algoritmo calcola e mostra la somma dei loro valori assoluti.
 
 </details>
 
-**Suggerimento:** usa un **accumulatore** `s ← 0`. Per ogni numero, la selezione non decide *se* sommarlo, ma *cosa* sommare: il numero oppure il suo opposto.
+**Suggerimento:** usa un **accumulatore** `s = 0`. Per ogni numero, la selezione non decide *se* sommarlo, ma *cosa* sommare: il numero oppure il suo opposto.
 
 [Vai alla soluzione](flowcharts_soluzioni.md#s1-e9-somma-dei-valori-assoluti-accumulatore)
 
