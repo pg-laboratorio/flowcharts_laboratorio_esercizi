@@ -1,11 +1,11 @@
 # Soluzioni – Raccolta Esercizi di Algoritmi e Flowchart
 
-Soluzioni degli esercizi della raccolta. Prova sempre a risolvere l'esercizio **prima** di guardare la soluzione, poi verifica il tuo flowchart con gli esempi della consegna.
+Soluzioni degli esercizi della raccolta. Prova sempre a risolvere l'esercizio **prima** di guardare la soluzione, poi verifica il tuo flowchart con i casi prova.
 
 **Convenzioni usate nei diagrammi**
 
-- `←` indica un'assegnazione (`s ← s + x`: "s diventa s + x").
-- `==` indica un confronto di uguaglianza, `!=` "diverso da".
+- `=` indica un'assegnazione (`s = s + x`: "s diventa s + x").
+- `==` indica un confronto di uguaglianza ("sono uguali?"), `!=` "sono diversi?". Si usano solo nei rombi.
 - `%` è il resto della divisione, `//` la divisione intera.
 - `V` / `F` sono le uscite Vero / Falso di una decisione.
 
@@ -23,7 +23,7 @@ Spesso esiste più di una soluzione corretta: se la tua è diversa ma supera tut
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN base<br>IN altezza"/]
-    INPUT --> PROC["area ← base * altezza"]
+    INPUT --> PROC["area = base * altezza"]
     PROC --> OUTPUT[/"OUT area"/]
     OUTPUT --> STOP([STOP])
 ```
@@ -40,7 +40,7 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN r"/]
-    INPUT --> PROC["area ← π * r * r<br>circ ← 2 * π * r"]
+    INPUT --> PROC["area = π * r * r<br>circ = 2 * π * r"]
     PROC --> OUTPUT[/"OUT area<br>OUT circ"/]
     OUTPUT --> STOP([STOP])
 ```
@@ -80,9 +80,9 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["SOGLIA ← 100"]
+    START([START]) --> INIT["SOGLIA = 100"]
     INIT --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> PROC["p ← x * y"]
+    INPUT --> PROC["p = x * y"]
     PROC --> OP[/"OUT p"/]
     OP --> COND{"p > SOGLIA"}
     COND -- V --> WARN[/"OUT 'Soglia superata'"/]
@@ -107,8 +107,8 @@ graph TD
     INPUT --> CHK{"x == y"}
     CHK -- V --> ERR[/"OUT 'Errore: i valori devono essere diversi'"/]
     CHK -- F --> COND{"x > y"}
-    COND -- V --> DIFF["d ← x - y"]
-    COND -- F --> SOMMA["s ← x + y"]
+    COND -- V --> DIFF["d = x - y"]
+    COND -- F --> SOMMA["s = x + y"]
     DIFF --> OD[/"OUT d"/]
     SOMMA --> OS[/"OUT s"/]
     ERR --> STOP([STOP])
@@ -131,7 +131,7 @@ graph TD
 graph TD
     START([START]) --> INPUT[/"IN x<br>IN y"/]
     INPUT --> C1{"x > 0"}
-    C1 -- V --> MULT["m ← x * y"]
+    C1 -- V --> MULT["m = x * y"]
     MULT --> OM[/"OUT m"/]
     C1 -- F --> C2{"x < 0"}
     C2 -- V --> OY[/"OUT y"/]
@@ -176,7 +176,7 @@ graph TD
 graph TD
     START([START]) --> INPUT[/"IN x<br>IN y"/]
     INPUT --> COND{"x > 0 AND y > 0"}
-    COND -- V --> PROC["s ← x + y"]
+    COND -- V --> PROC["s = x + y"]
     PROC --> OS[/"OUT s"/]
     COND -- F --> ERR[/"OUT 'Errore'"/]
     OS --> STOP([STOP])
@@ -195,20 +195,20 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> INIT["s ← 0"]
+    INPUT --> INIT["s = 0"]
     INIT --> CX{"x < 0"}
-    CX -- V --> NX["s ← s - x"]
-    CX -- F --> PX["s ← s + x"]
+    CX -- V --> NX["s = s - x"]
+    CX -- F --> PX["s = s + x"]
     NX --> CY{"y < 0"}
     PX --> CY
-    CY -- V --> NY["s ← s - y"]
-    CY -- F --> PY["s ← s + y"]
+    CY -- V --> NY["s = s - y"]
+    CY -- F --> PY["s = s + y"]
     NY --> OUTPUT[/"OUT s"/]
     PY --> OUTPUT
     OUTPUT --> STOP([STOP])
 ```
 
-**Nota:** sottrarre un numero negativo equivale a sommare il suo opposto: se x = -3, `s - x` aggiunge 3. In alternativa si può scrivere `s ← s + (-x)`.
+**Nota:** sottrarre un numero negativo equivale a sommare il suo opposto: se x vale -3, `s - x` aggiunge 3. In alternativa si può scrivere `s = s + (-x)`.
 
 [Torna all'esercizio](README.md#s1-e9-somma-dei-valori-assoluti-accumulatore)
 
@@ -222,19 +222,19 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> INIT["pos ← 0<br>neg ← 0<br>nul ← 0"]
+    INPUT --> INIT["pos = 0<br>neg = 0<br>nul = 0"]
     INIT --> CX1{"x > 0"}
-    CX1 -- V --> PX["pos ← pos + 1"]
+    CX1 -- V --> PX["pos = pos + 1"]
     CX1 -- F --> CX2{"x < 0"}
-    CX2 -- V --> NX["neg ← neg + 1"]
-    CX2 -- F --> ZX["nul ← nul + 1"]
+    CX2 -- V --> NX["neg = neg + 1"]
+    CX2 -- F --> ZX["nul = nul + 1"]
     PX --> CY1{"y > 0"}
     NX --> CY1
     ZX --> CY1
-    CY1 -- V --> PY["pos ← pos + 1"]
+    CY1 -- V --> PY["pos = pos + 1"]
     CY1 -- F --> CY2{"y < 0"}
-    CY2 -- V --> NY["neg ← neg + 1"]
-    CY2 -- F --> ZY["nul ← nul + 1"]
+    CY2 -- V --> NY["neg = neg + 1"]
+    CY2 -- F --> ZY["nul = nul + 1"]
     PY --> OUTPUT[/"OUT pos<br>OUT neg<br>OUT nul"/]
     NY --> OUTPUT
     ZY --> OUTPUT
@@ -326,12 +326,12 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> INIT["s ← 0"]
+    INPUT --> INIT["s = 0"]
     INIT --> CX{"x > 0 AND x % 2 == 0"}
-    CX -- V --> AX["s ← s + x"]
+    CX -- V --> AX["s = s + x"]
     CX -- F --> CY{"y > 0 AND y % 2 == 0"}
     AX --> CY
-    CY -- V --> AY["s ← s + y"]
+    CY -- V --> AY["s = s + y"]
     CY -- F --> OUTPUT[/"OUT s"/]
     AY --> OUTPUT
     OUTPUT --> STOP([STOP])
@@ -351,7 +351,7 @@ graph TD
     START([START]) --> INPUT[/"IN n"/]
     INPUT --> CHK{"n < 10 OR n > 99"}
     CHK -- V --> ERR[/"OUT 'Errore'"/]
-    CHK -- F --> PROC["d ← n // 10<br>u ← n % 10<br>s ← d + u"]
+    CHK -- F --> PROC["d = n // 10<br>u = n % 10<br>s = d + u"]
     PROC --> OUTPUT[/"OUT d<br>OUT u<br>OUT s"/]
     ERR --> STOP([STOP])
     OUTPUT --> STOP
@@ -372,10 +372,10 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["i ← 0"]
+    START([START]) --> INIT["i = 0"]
     INIT --> COND{"i <= 3"}
     COND -- V --> OUTPUT[/"OUT i"/]
-    OUTPUT --> INC["i ← i + 1"]
+    OUTPUT --> INC["i = i + 1"]
     INC --> COND
     COND -- F --> STOP([STOP])
 ```
@@ -393,11 +393,11 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["i ← 0"]
+    START([START]) --> INIT["i = 0"]
     INIT --> COND{"i <= 5"}
     COND -- V --> CHK{"i % 2 == 0"}
     CHK -- V --> OUTPUT[/"OUT i"/]
-    CHK -- F --> INC["i ← i + 1"]
+    CHK -- F --> INC["i = i + 1"]
     OUTPUT --> INC
     INC --> COND
     COND -- F --> STOP([STOP])
@@ -407,10 +407,10 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["i ← 0"]
+    START([START]) --> INIT["i = 0"]
     INIT --> COND{"i <= 5"}
     COND -- V --> OUTPUT[/"OUT i"/]
-    OUTPUT --> INC["i ← i + 2"]
+    OUTPUT --> INC["i = i + 2"]
     INC --> COND
     COND -- F --> STOP([STOP])
 ```
@@ -428,10 +428,10 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["i ← 0<br>s ← 0"]
+    START([START]) --> INIT["i = 0<br>s = 0"]
     INIT --> COND{"i <= 10"}
-    COND -- V --> PROC["s ← s + i"]
-    PROC --> INC["i ← i + 1"]
+    COND -- V --> PROC["s = s + i"]
+    PROC --> INC["i = i + 1"]
     INC --> COND
     COND -- F --> OUTPUT[/"OUT s"/]
     OUTPUT --> STOP([STOP])
@@ -448,11 +448,11 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["i ← 5<br>sd ← 0"]
+    START([START]) --> INIT["i = 5<br>sd = 0"]
     INIT --> COND{"i <= 15"}
     COND -- V --> CHK{"i % 2 != 0"}
-    CHK -- V --> PROC["sd ← sd + i"]
-    CHK -- F --> INC["i ← i + 1"]
+    CHK -- V --> PROC["sd = sd + i"]
+    CHK -- F --> INC["i = i + 1"]
     PROC --> INC
     INC --> COND
     COND -- F --> OUTPUT[/"OUT sd"/]
@@ -470,11 +470,11 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["i ← 1<br>conta ← 0"]
+    START([START]) --> INIT["i = 1<br>conta = 0"]
     INIT --> COND{"i <= 30"}
     COND -- V --> CHK{"i % 3 == 0"}
-    CHK -- V --> PROC["conta ← conta + 1"]
-    CHK -- F --> INC["i ← i + 1"]
+    CHK -- V --> PROC["conta = conta + 1"]
+    CHK -- F --> INC["i = i + 1"]
     PROC --> INC
     INC --> COND
     COND -- F --> OUTPUT[/"OUT conta"/]
@@ -494,12 +494,12 @@ graph TD
 graph TD
     START([START]) --> INN[/"IN N"/]
     INN --> IN1[/"IN x"/]
-    IN1 --> INIT["max ← x<br>i ← 2"]
+    IN1 --> INIT["max = x<br>i = 2"]
     INIT --> COND{"i <= N"}
     COND -- V --> INX[/"IN x"/]
     INX --> CHK{"x > max"}
-    CHK -- V --> UPD["max ← x"]
-    CHK -- F --> INC["i ← i + 1"]
+    CHK -- V --> UPD["max = x"]
+    CHK -- F --> INC["i = i + 1"]
     UPD --> INC
     INC --> COND
     COND -- F --> OUTPUT[/"OUT max"/]
@@ -525,10 +525,10 @@ graph TD
     INPUT --> CHK{"x <= 0"}
     CHK -- V --> ERR[/"OUT 'Inserisci un numero positivo'"/]
     ERR --> INPUT
-    CHK -- F --> INIT["i ← 0<br>s ← 0"]
+    CHK -- F --> INIT["i = 0<br>s = 0"]
     INIT --> COND{"i <= x"}
-    COND -- V --> PROC["s ← s + i"]
-    PROC --> INC["i ← i + 1"]
+    COND -- V --> PROC["s = s + i"]
+    PROC --> INC["i = i + 1"]
     INC --> COND
     COND -- F --> OUTPUT[/"OUT s"/]
     OUTPUT --> STOP([STOP])
@@ -548,12 +548,12 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INN[/"IN N"/]
-    INN --> INIT["neg ← Falso<br>i ← 1"]
+    INN --> INIT["neg = Falso<br>i = 1"]
     INIT --> COND{"i <= N"}
     COND -- V --> INX[/"IN x"/]
     INX --> CHK{"x < 0"}
-    CHK -- V --> FLAG["neg ← Vero"]
-    CHK -- F --> INC["i ← i + 1"]
+    CHK -- V --> FLAG["neg = Vero"]
+    CHK -- F --> INC["i = i + 1"]
     FLAG --> INC
     INC --> COND
     COND -- F --> CF{"neg"}
@@ -579,7 +579,7 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN x<br>IN y"/]
-    INPUT --> PROC["s ← x + y<br>m ← x * y"]
+    INPUT --> PROC["s = x + y<br>m = x * y"]
     PROC --> OUTPUT[/"OUT s<br>OUT m"/]
     OUTPUT --> STOP([STOP])
 ```
@@ -617,11 +617,11 @@ graph TD
 ```mermaid
 graph TD
     START([START]) --> INPUT[/"IN x"/]
-    INPUT --> INIT["i ← 0"]
+    INPUT --> INIT["i = 0"]
     INIT --> COND{"i <= 10"}
-    COND -- V --> PROC["t ← x * i"]
+    COND -- V --> PROC["t = x * i"]
     PROC --> OUTPUT[/"OUT t"/]
-    OUTPUT --> INC["i ← i + 1"]
+    OUTPUT --> INC["i = i + 1"]
     INC --> COND
     COND -- F --> STOP([STOP])
 ```
@@ -637,9 +637,9 @@ graph TD
 
 ```mermaid
 graph TD
-    START([START]) --> INIT["s ← 0<br>conta ← 0"]
+    START([START]) --> INIT["s = 0<br>conta = 0"]
     INIT --> INPUT[/"IN x"/]
-    INPUT --> PROC["s ← s + x<br>conta ← conta + 1"]
+    INPUT --> PROC["s = s + x<br>conta = conta + 1"]
     PROC --> COND{"s <= 100"}
     COND -- V --> INPUT
     COND -- F --> OUTPUT[/"OUT s<br>OUT conta"/]
